@@ -66,6 +66,14 @@ export const SITE = {
   twitterHandle: "@theUninvited444",
 } as const;
 
+const FUNNEL_BASE_URL = "https://portfolio.tail81be07.ts.net";
+
+export const FUNNEL_LINKS = {
+  photostream: FUNNEL_BASE_URL,
+  samio: `${FUNNEL_BASE_URL}:8443/login`,
+  civicAtlas: `${FUNNEL_BASE_URL}:10000`,
+} as const;
+
 export const PROFILE = {
   initials: "MSA",
   fullName: "Muhammad Sameer Ali",
@@ -147,6 +155,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "FastAPI", "MongoDB Atlas"],
     color: "from-energy-red to-energy-orange",
     route: "/projects/photostream-snapcloud",
+    liveUrl: FUNNEL_LINKS.photostream,
   },
   {
     title: "SAMIO",
@@ -155,6 +164,7 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
     color: "from-energy-orange to-energy-gold",
     route: "/projects/samio",
+    liveUrl: FUNNEL_LINKS.samio,
   },
   {
     title: "Peshawar Civic GIS Atlas",
@@ -163,6 +173,7 @@ export const PROJECTS: Project[] = [
     tech: ["Laravel", "PHP", "Leaflet", "MariaDB"],
     color: "from-energy-gold to-energy-red",
     route: "/projects/peshawar-civic-gis-atlas",
+    liveUrl: FUNNEL_LINKS.civicAtlas,
   },
 ];
 

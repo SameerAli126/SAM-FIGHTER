@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import FighterBackground from "@/components/FighterBackground";
 import Navbar from "@/components/Navbar";
 import SeoMeta from "@/components/SeoMeta";
+import { FUNNEL_LINKS } from "@/config/site";
 
 const features = [
   {
@@ -97,10 +98,12 @@ const SamioPage = () => (
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
-                href="/#contact"
+                href={FUNNEL_LINKS.samio}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm rounded hover:opacity-90 transition-opacity"
               >
-                <ShieldCheck size={16} /> Request Demo
+                <ShieldCheck size={16} /> Live Funnel
               </a>
               <span className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded text-muted-foreground">
                 <Database size={16} /> Private Build
@@ -203,13 +206,15 @@ const SamioPage = () => (
               Need A Similar <span className="energy-gradient-text">Operations System?</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              I can design and ship internal dashboards, reporting systems, and workflow tools with the same product-minded approach.
+              Open the current funnel-hosted SAMIO build, or contact me if you want a similar operations dashboard for your own workflow.
             </p>
             <a
-              href="/#contact"
+              href={FUNNEL_LINKS.samio}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display uppercase tracking-wider rounded hover:opacity-90 transition-opacity"
             >
-              <ShieldCheck size={18} /> Contact Me
+              <ShieldCheck size={18} /> Launch SAMIO
             </a>
           </motion.div>
         </div>

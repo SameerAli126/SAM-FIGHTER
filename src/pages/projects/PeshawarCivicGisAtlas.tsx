@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import FighterBackground from "@/components/FighterBackground";
 import Navbar from "@/components/Navbar";
 import SeoMeta from "@/components/SeoMeta";
+import { FUNNEL_LINKS } from "@/config/site";
 
 const features = [
   {
@@ -96,10 +97,12 @@ const PeshawarCivicGisAtlasPage = () => (
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
-                href="/#contact"
+                href={FUNNEL_LINKS.civicAtlas}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm rounded hover:opacity-90 transition-opacity"
               >
-                <Users size={16} /> Request Demo
+                <Users size={16} /> Live Funnel
               </a>
               <span className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded text-muted-foreground">
                 <Map size={16} /> Built For Portfolio Delivery
@@ -202,13 +205,15 @@ const PeshawarCivicGisAtlasPage = () => (
               Building Public Data <span className="energy-gradient-text">Workflows</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              I can help design data-heavy internal tools, public explorer experiences, and admin workflows with the same structured approach.
+              Open the current funnel-hosted GIS build, or reach out if you need a mapped public explorer or admin data workflow.
             </p>
             <a
-              href="/#contact"
+              href={FUNNEL_LINKS.civicAtlas}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display uppercase tracking-wider rounded hover:opacity-90 transition-opacity"
             >
-              <Users size={18} /> Contact Me
+              <Users size={18} /> Launch Civic Atlas
             </a>
           </motion.div>
         </div>

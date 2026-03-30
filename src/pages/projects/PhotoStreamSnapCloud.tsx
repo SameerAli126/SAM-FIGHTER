@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import FighterBackground from "@/components/FighterBackground";
 import Navbar from "@/components/Navbar";
 import SeoMeta from "@/components/SeoMeta";
+import { FUNNEL_LINKS } from "@/config/site";
 
 const features = [
   {
@@ -97,16 +98,21 @@ const PhotoStreamSnapCloudPage = () => (
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
-                href="https://photostream-api.onrender.com/api/docs"
+                href={FUNNEL_LINKS.photostream}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm rounded hover:opacity-90 transition-opacity"
               >
-                <ExternalLink size={16} /> View API Docs
+                <ExternalLink size={16} /> Launch PhotoStream
               </a>
-              <span className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded text-muted-foreground">
-                <Star size={16} /> Frontend Source Private
-              </span>
+              <a
+                href="https://photostream-api.onrender.com/api/docs"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded hover:border-primary transition-colors"
+              >
+                <Star size={16} /> API Docs
+              </a>
             </div>
           </motion.div>
         </div>
@@ -205,15 +211,16 @@ const PhotoStreamSnapCloudPage = () => (
               Explore The <span className="energy-gradient-text">API Surface</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              Review the live OpenAPI documentation for the shared backend powering both frontend variants.
+              Open the current funnel-hosted PhotoStream build. SnapCloud remains the alternate
+              frontend implementation for the same API architecture and reusable backend contract.
             </p>
             <a
-              href="https://photostream-api.onrender.com/api/docs"
+              href={FUNNEL_LINKS.photostream}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display uppercase tracking-wider rounded hover:opacity-90 transition-opacity"
             >
-              <ExternalLink size={18} /> Open API Docs
+              <ExternalLink size={18} /> Launch PhotoStream
             </a>
           </motion.div>
         </div>
