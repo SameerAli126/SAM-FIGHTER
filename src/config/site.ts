@@ -56,17 +56,27 @@ export type SocialLink = {
   label: string;
 };
 
+export const SITE = {
+  url: "https://msameerali.dev",
+  name: "Muhammad Sameer Ali Portfolio",
+  defaultTitle: "Muhammad Sameer Ali | Full-Stack Software Engineer",
+  defaultDescription:
+    "Portfolio of Muhammad Sameer Ali, a full-stack software engineer building fast, scalable web products across React, Next.js, FastAPI, Laravel, MongoDB, and PostgreSQL.",
+  ogImage: "/og-image.jpg",
+  twitterHandle: "@theUninvited444",
+} as const;
+
 export const PROFILE = {
   initials: "MSA",
   fullName: "Muhammad Sameer Ali",
   contactEmail: "khsameer626@gmail.com",
-  roleLine: "Full-Stack MERN Developer",
+  roleLine: "Full-Stack Software Engineer",
   heroTitleLeading: "Unleash The",
   heroTitleAccent: "Power of Code",
   heroDescription:
-    "I design and build fast, scalable web products with strong UX and clean engineering standards.",
+    "I design and build fast, scalable web products with strong UX, clean systems, and production-minded engineering standards.",
   aboutDeveloper:
-    "I am a full-stack MERN developer building modern products with React, Node.js, Next.js, TypeScript, and Tailwind CSS. My focus is simple: ship software that solves real business problems and still feels great to use.",
+    "I am a full-stack software engineer building modern products with React, Next.js, Node.js, TypeScript, FastAPI, Laravel, MongoDB, PostgreSQL, and Tailwind CSS. My focus is simple: ship software that solves real business problems and still feels great to use.",
   aboutDeveloperMindset:
     "I work with a structured engineering process: clarify requirements, design maintainable architecture, implement with clean patterns, and iterate quickly based on user and stakeholder feedback.",
   aboutDeveloperExtra:
@@ -130,6 +140,30 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://invoicegen-pro.netlify.app/",
     sourceUrl: "https://github.com/SameerAli126/invoicegen-pro",
   },
+  {
+    title: "PhotoStream / SnapCloud",
+    description:
+      "A cloud-native photo-sharing platform with creator and consumer roles, uploads, discovery, comments, likes, ratings, and two frontend implementations on one API.",
+    tech: ["React", "TypeScript", "FastAPI", "MongoDB Atlas"],
+    color: "from-energy-red to-energy-orange",
+    route: "/projects/photostream-snapcloud",
+  },
+  {
+    title: "SAMIO",
+    description:
+      "A local-first personal finance and life-ops dashboard with OTP auth, admin CRUD workflows, reports, budgeting, and structured PostgreSQL data models.",
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
+    color: "from-energy-orange to-energy-gold",
+    route: "/projects/samio",
+  },
+  {
+    title: "Peshawar Civic GIS Atlas",
+    description:
+      "A Laravel-based civic GIS with public facility discovery, dataset ingestion, validation, RBAC, Leaflet mapping, and provenance-aware publishing workflows.",
+    tech: ["Laravel", "PHP", "Leaflet", "MariaDB"],
+    color: "from-energy-gold to-energy-red",
+    route: "/projects/peshawar-civic-gis-atlas",
+  },
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
@@ -143,6 +177,9 @@ export const TOURNAMENT_RESULTS: TournamentResult[] = [
   { event: "OptiTrade 3.0", placement: "Shipped", character: "Production Release", result: "W" },
   { event: "WordWanderer", placement: "Shipped", character: "Full Stack Delivery", result: "W" },
   { event: "InvoiceGen Pro", placement: "Shipped", character: "AI + Product Integration", result: "W" },
+  { event: "PhotoStream / SnapCloud", placement: "Built", character: "Dual Frontend Delivery", result: "W" },
+  { event: "SAMIO", placement: "Built", character: "Finance Ops Dashboard", result: "W" },
+  { event: "Peshawar Civic GIS Atlas", placement: "Built", character: "Public GIS Workflow", result: "W" },
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [

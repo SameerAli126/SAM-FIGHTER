@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import FighterBackground from "@/components/FighterBackground";
 import Navbar from "@/components/Navbar";
+import SeoMeta from "@/components/SeoMeta";
 
 const features = [
   {
@@ -60,6 +61,11 @@ const tech = [
 
 const InvoiceGenProPage = () => (
   <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <SeoMeta
+      title="InvoiceGen Pro | Muhammad Sameer Ali"
+      description="InvoiceGen Pro is an AI-assisted invoicing platform built with Next.js, Gemini AI, analytics, PDF workflows, and client management features."
+      path="/projects/invoicegen-pro"
+    />
     <Navbar />
     <FighterBackground>
       <section className="pt-32 pb-16 relative">

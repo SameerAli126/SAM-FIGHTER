@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { NAV_ITEMS, PROFILE } from "@/config/site";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  const resolveHref = (href: `#${string}`) => {
+    return isHomePage ? href : `/${href}`;
+  };
 
   useEffect(() => {
     let rafId = 0;
@@ -55,7 +62,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <a
-          href="#hero"
+          href={resolveHref("#hero")}
           className="font-display text-sm md:text-xl font-bold tracking-wide md:tracking-wider max-w-[70vw] md:max-w-none truncate"
         >
           <span className="energy-gradient-text">{PROFILE.fullName}</span>
@@ -66,7 +73,7 @@ const Navbar = () => {
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
               <a
-                href={item.href}
+                href={resolveHref(item.href)}
                 className="font-heading text-sm font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary"
               >
                 {item.label}
@@ -98,7 +105,7 @@ const Navbar = () => {
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
                   <a
-                    href={item.href}
+                    href={resolveHref(item.href)}
                     onClick={() => setMobileOpen(false)}
                     className="font-heading text-lg font-semibold uppercase tracking-widest text-foreground hover:text-primary"
                   >

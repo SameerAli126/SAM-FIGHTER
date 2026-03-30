@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import FighterBackground from "@/components/FighterBackground";
 import Navbar from "@/components/Navbar";
+import SeoMeta from "@/components/SeoMeta";
 
 const features = [
   {
@@ -75,6 +76,11 @@ const structure = [
 
 const OptiTradePage = () => (
   <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <SeoMeta
+      title="OptiTrade 3.0 | Muhammad Sameer Ali"
+      description="OptiTrade 3.0 is a stock trading platform with portfolio management, stock screening, financial news, watchlists, and secure role-aware workflows."
+      path="/projects/optitrade"
+    />
     <Navbar />
     <FighterBackground>
       <section className="pt-32 pb-16 relative">

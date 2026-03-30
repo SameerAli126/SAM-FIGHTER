@@ -1,15 +1,14 @@
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  ExternalLink,
-  Github,
-  Star,
-  Zap,
-  Globe,
-  Mic,
   BarChart3,
-  Trophy,
-  Moon,
+  Database,
+  FileJson,
+  KeyRound,
+  LayoutDashboard,
+  Receipt,
+  ShieldCheck,
+  Wallet,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import FighterBackground from "@/components/FighterBackground";
@@ -18,60 +17,60 @@ import SeoMeta from "@/components/SeoMeta";
 
 const features = [
   {
-    icon: Trophy,
-    title: "XP and Streak System",
-    desc: "Earn experience points for completing lessons and maintain daily learning streaks with visual indicators.",
+    icon: KeyRound,
+    title: "Email + OTP Authentication",
+    desc: "Password-based sign in with email OTP verification and signed session cookies for protected access.",
   },
   {
-    icon: Star,
-    title: "Achievement System",
-    desc: "Unlock badges and rewards for milestones. Compete with other learners on global leaderboards.",
+    icon: LayoutDashboard,
+    title: "Life Ops Dashboard",
+    desc: "An overview experience for transactions, income, budgets, tasks, subscriptions, goals, and operational insights.",
+  },
+  {
+    icon: Receipt,
+    title: "Admin CRUD Workflows",
+    desc: "Structured admin flows for updating accounts, categories, transactions, rules, debts, assets, and recurring records.",
   },
   {
     icon: BarChart3,
-    title: "Progress Analytics",
-    desc: "Detailed learning statistics and progress visualization with spaced repetition for better retention.",
+    title: "Reporting and Insights",
+    desc: "Cash, burn, runway, trend stories, commitments, and export-oriented reports designed for everyday decision-making.",
   },
   {
-    icon: Zap,
-    title: "Adaptive Difficulty",
-    desc: "Multiple question types including multiple choice, translation, and audio recognition that adapt to your pace.",
+    icon: Wallet,
+    title: "Budget and Rules Engine",
+    desc: "Bucket budgeting and lightweight rules support for categorization, review flags, and spending visibility.",
   },
   {
-    icon: Mic,
-    title: "Voice Recognition",
-    desc: "Practice pronunciation with real-time audio exercises and instant feedback on accuracy.",
-  },
-  {
-    icon: Globe,
-    title: "Chinese (Mandarin)",
-    desc: "Complete course with Pinyin and Hanzi. Learn language with cultural context and insights.",
-  },
-  {
-    icon: Moon,
-    title: "Dark and Light Mode",
-    desc: "Customizable theme preferences with WCAG compliant design and offline support.",
+    icon: FileJson,
+    title: "Portable Data Exports",
+    desc: "Reports and JSON exports keep the product local-first and friendly for backup or migration workflows.",
   },
 ];
 
 const tech = [
-  { label: "Next.js 14", cat: "Frontend" },
+  { label: "Next.js", cat: "Frontend" },
   { label: "TypeScript", cat: "Frontend" },
-  { label: "Tailwind CSS", cat: "Frontend" },
-  { label: "Framer Motion", cat: "Frontend" },
-  { label: "Zustand", cat: "Frontend" },
-  { label: "Express.js", cat: "Backend" },
-  { label: "MongoDB Atlas", cat: "Backend" },
-  { label: "JWT", cat: "Backend" },
-  { label: "Vercel", cat: "DevOps" },
+  { label: "Prisma", cat: "ORM" },
+  { label: "PostgreSQL", cat: "Data" },
+  { label: "SMTP OTP", cat: "Auth" },
+  { label: "Tailwind CSS", cat: "UI" },
+  { label: "Docker Compose", cat: "Local Dev" },
+  { label: "Vercel", cat: "Deployment" },
 ];
 
-const WordWandererPage = () => (
+const architecture = [
+  "Multi-tenant data isolation per user with Prisma-backed PostgreSQL models and minor-unit money storage.",
+  "Protected dashboard routes plus admin APIs for records, bootstrap setup, reports, and settings updates.",
+  "A local-first operating model that supports self-hosting, dev OTP flows, data exports, and iterative personal-finance workflows.",
+];
+
+const SamioPage = () => (
   <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
     <SeoMeta
-      title="WordWanderer | Muhammad Sameer Ali"
-      description="WordWanderer is a gamified language learning platform with SRS review queues, speech scoring, progress tracking, streaks, and achievement systems."
-      path="/projects/wordwanderer"
+      title="SAMIO | Muhammad Sameer Ali"
+      description="SAMIO is a local-first personal finance and life-ops dashboard built with Next.js, Prisma, PostgreSQL, OTP authentication, and admin reporting workflows."
+      path="/projects/samio"
     />
     <Navbar />
     <FighterBackground>
@@ -89,30 +88,23 @@ const WordWandererPage = () => (
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-primary mb-3">Project Showcase</p>
             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase mb-6">
-              Word<span className="energy-gradient-text">Wanderer</span>
+              SA<span className="energy-gradient-text">MIO</span>
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mb-8">
-              A modern, gamified language learning platform inspired by Duolingo. Built with
-              cutting-edge web technologies to make language acquisition engaging, effective, and
-              fun.
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-8">
+              A local-first personal finance and life-ops dashboard designed to manage transactions,
+              income, debts, assets, subscriptions, goals, budgets, and operational reporting from a
+              single system.
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
-                href="https://wordwanderer.vercel.app"
-                target="_blank"
-                rel="noreferrer"
+                href="/#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm rounded hover:opacity-90 transition-opacity"
               >
-                <ExternalLink size={16} /> Live Demo
+                <ShieldCheck size={16} /> Request Demo
               </a>
-              <a
-                href="https://github.com/SameerAli126/WordWanderer"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded hover:border-primary transition-colors"
-              >
-                <Github size={16} /> View Source
-              </a>
+              <span className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded text-muted-foreground">
+                <Database size={16} /> Private Build
+              </span>
             </div>
           </motion.div>
         </div>
@@ -155,6 +147,35 @@ const WordWandererPage = () => (
             viewport={{ once: true }}
             className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
           >
+            Architecture <span className="energy-gradient-text">Highlights</span>
+          </motion.h2>
+          <div className="glass-card rounded-lg overflow-hidden border border-primary/20">
+            {architecture.map((note, i) => (
+              <motion.div
+                key={note}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+                className={`p-5 text-sm text-muted-foreground leading-relaxed ${
+                  i < architecture.length - 1 ? "border-b border-border/50" : ""
+                }`}
+              >
+                {note}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+          >
             Tech <span className="energy-gradient-text">Stack</span>
           </motion.h2>
           <div className="flex flex-wrap gap-3">
@@ -179,16 +200,16 @@ const WordWandererPage = () => (
         <div className="container mx-auto px-6 max-w-5xl text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-display text-4xl font-bold uppercase mb-6">
-              Try It <span className="energy-gradient-text">Live</span>
+              Need A Similar <span className="energy-gradient-text">Operations System?</span>
             </h2>
-            <p className="text-muted-foreground mb-8">Experience gamified language learning firsthand.</p>
+            <p className="text-muted-foreground mb-8">
+              I can design and ship internal dashboards, reporting systems, and workflow tools with the same product-minded approach.
+            </p>
             <a
-              href="https://wordwanderer.vercel.app"
-              target="_blank"
-              rel="noreferrer"
+              href="/#contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display uppercase tracking-wider rounded hover:opacity-90 transition-opacity"
             >
-              <ExternalLink size={18} /> Launch WordWanderer
+              <ShieldCheck size={18} /> Contact Me
             </a>
           </motion.div>
         </div>
@@ -197,4 +218,4 @@ const WordWandererPage = () => (
   </div>
 );
 
-export default WordWandererPage;
+export default SamioPage;

@@ -7,10 +7,12 @@ import EsportsSection from "@/components/EsportsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FighterBackground from "@/components/FighterBackground";
+import SeoMeta from "@/components/SeoMeta";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <SeoMeta />
       <Navbar />
       <FighterBackground>
         <HeroSection />

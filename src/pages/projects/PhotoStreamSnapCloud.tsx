@@ -2,14 +2,13 @@ import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ExternalLink,
-  Github,
-  Star,
-  Zap,
+  Cloud,
   Globe,
-  Mic,
-  BarChart3,
-  Trophy,
-  Moon,
+  Images,
+  MessageCircle,
+  Shield,
+  Star,
+  Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import FighterBackground from "@/components/FighterBackground";
@@ -18,60 +17,60 @@ import SeoMeta from "@/components/SeoMeta";
 
 const features = [
   {
-    icon: Trophy,
-    title: "XP and Streak System",
-    desc: "Earn experience points for completing lessons and maintain daily learning streaks with visual indicators.",
+    icon: Users,
+    title: "Creator and Consumer Roles",
+    desc: "Role-aware flows for uploading, managing, browsing, and interacting with media-backed content.",
   },
   {
-    icon: Star,
-    title: "Achievement System",
-    desc: "Unlock badges and rewards for milestones. Compete with other learners on global leaderboards.",
+    icon: Images,
+    title: "Media Upload Pipeline",
+    desc: "Photo uploads with metadata, thumbnails, profile pictures, and optimized asset handling through Cloudinary.",
   },
   {
-    icon: BarChart3,
-    title: "Progress Analytics",
-    desc: "Detailed learning statistics and progress visualization with spaced repetition for better retention.",
-  },
-  {
-    icon: Zap,
-    title: "Adaptive Difficulty",
-    desc: "Multiple question types including multiple choice, translation, and audio recognition that adapt to your pace.",
-  },
-  {
-    icon: Mic,
-    title: "Voice Recognition",
-    desc: "Practice pronunciation with real-time audio exercises and instant feedback on accuracy.",
+    icon: MessageCircle,
+    title: "Social Interaction Layer",
+    desc: "Comments, likes, ratings, search, pagination, and detail views designed for active content exploration.",
   },
   {
     icon: Globe,
-    title: "Chinese (Mandarin)",
-    desc: "Complete course with Pinyin and Hanzi. Learn language with cultural context and insights.",
+    title: "Regional Discovery",
+    desc: "Geographic server discovery endpoints that route clients toward the nearest backend region for lower latency.",
   },
   {
-    icon: Moon,
-    title: "Dark and Light Mode",
-    desc: "Customizable theme preferences with WCAG compliant design and offline support.",
+    icon: Shield,
+    title: "JWT and RBAC",
+    desc: "Secure authentication, protected creator actions, and clean API contracts documented through OpenAPI.",
+  },
+  {
+    icon: Cloud,
+    title: "Two Frontends, One Backend",
+    desc: "Built both PhotoStream and SnapCloud as separate frontend experiences on top of the same FastAPI service layer.",
   },
 ];
 
 const tech = [
-  { label: "Next.js 14", cat: "Frontend" },
+  { label: "React", cat: "Frontend" },
   { label: "TypeScript", cat: "Frontend" },
-  { label: "Tailwind CSS", cat: "Frontend" },
-  { label: "Framer Motion", cat: "Frontend" },
-  { label: "Zustand", cat: "Frontend" },
-  { label: "Express.js", cat: "Backend" },
-  { label: "MongoDB Atlas", cat: "Backend" },
-  { label: "JWT", cat: "Backend" },
-  { label: "Vercel", cat: "DevOps" },
+  { label: "Vite", cat: "Frontend" },
+  { label: "FastAPI", cat: "Backend" },
+  { label: "MongoDB Atlas", cat: "Data" },
+  { label: "Cloudinary", cat: "Media" },
+  { label: "OpenAPI", cat: "API" },
+  { label: "Render", cat: "DevOps" },
 ];
 
-const WordWandererPage = () => (
+const deliveryNotes = [
+  "Designed a reusable service layer so both frontend implementations could consume the same auth, photo, comment, like, and discovery endpoints.",
+  "Extended the platform beyond simple uploads by adding profile pictures, regional discovery, and social engagement features needed for real product behavior.",
+  "Kept the architecture cloud-ready with MongoDB Atlas, Cloudinary, and deployable FastAPI endpoints instead of a local-only prototype.",
+];
+
+const PhotoStreamSnapCloudPage = () => (
   <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
     <SeoMeta
-      title="WordWanderer | Muhammad Sameer Ali"
-      description="WordWanderer is a gamified language learning platform with SRS review queues, speech scoring, progress tracking, streaks, and achievement systems."
-      path="/projects/wordwanderer"
+      title="PhotoStream / SnapCloud | Muhammad Sameer Ali"
+      description="PhotoStream and SnapCloud are two frontend implementations of a cloud-native photo-sharing platform built with React, FastAPI, MongoDB Atlas, and Cloudinary."
+      path="/projects/photostream-snapcloud"
     />
     <Navbar />
     <FighterBackground>
@@ -89,30 +88,25 @@ const WordWandererPage = () => (
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-primary mb-3">Project Showcase</p>
             <h1 className="font-display text-5xl md:text-7xl font-bold uppercase mb-6">
-              Word<span className="energy-gradient-text">Wanderer</span>
+              PhotoStream <span className="energy-gradient-text">/ SnapCloud</span>
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mb-8">
-              A modern, gamified language learning platform inspired by Duolingo. Built with
-              cutting-edge web technologies to make language acquisition engaging, effective, and
-              fun.
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-8">
+              A cloud-native photo sharing platform built around a reusable FastAPI backend and
+              two separate React frontends. The system covers creator uploads, social discovery,
+              comments, likes, ratings, media optimization, and regional server discovery.
             </p>
             <div className="flex gap-4 flex-wrap">
               <a
-                href="https://wordwanderer.vercel.app"
+                href="https://photostream-api.onrender.com/api/docs"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm rounded hover:opacity-90 transition-opacity"
               >
-                <ExternalLink size={16} /> Live Demo
+                <ExternalLink size={16} /> View API Docs
               </a>
-              <a
-                href="https://github.com/SameerAli126/WordWanderer"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded hover:border-primary transition-colors"
-              >
-                <Github size={16} /> View Source
-              </a>
+              <span className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded text-muted-foreground">
+                <Star size={16} /> Frontend Source Private
+              </span>
             </div>
           </motion.div>
         </div>
@@ -155,6 +149,35 @@ const WordWandererPage = () => (
             viewport={{ once: true }}
             className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
           >
+            Delivery <span className="energy-gradient-text">Notes</span>
+          </motion.h2>
+          <div className="glass-card rounded-lg overflow-hidden border border-primary/20">
+            {deliveryNotes.map((note, i) => (
+              <motion.div
+                key={note}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+                className={`p-5 text-sm text-muted-foreground leading-relaxed ${
+                  i < deliveryNotes.length - 1 ? "border-b border-border/50" : ""
+                }`}
+              >
+                {note}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+          >
             Tech <span className="energy-gradient-text">Stack</span>
           </motion.h2>
           <div className="flex flex-wrap gap-3">
@@ -179,16 +202,18 @@ const WordWandererPage = () => (
         <div className="container mx-auto px-6 max-w-5xl text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-display text-4xl font-bold uppercase mb-6">
-              Try It <span className="energy-gradient-text">Live</span>
+              Explore The <span className="energy-gradient-text">API Surface</span>
             </h2>
-            <p className="text-muted-foreground mb-8">Experience gamified language learning firsthand.</p>
+            <p className="text-muted-foreground mb-8">
+              Review the live OpenAPI documentation for the shared backend powering both frontend variants.
+            </p>
             <a
-              href="https://wordwanderer.vercel.app"
+              href="https://photostream-api.onrender.com/api/docs"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display uppercase tracking-wider rounded hover:opacity-90 transition-opacity"
             >
-              <ExternalLink size={18} /> Launch WordWanderer
+              <ExternalLink size={18} /> Open API Docs
             </a>
           </motion.div>
         </div>
@@ -197,4 +222,4 @@ const WordWandererPage = () => (
   </div>
 );
 
-export default WordWandererPage;
+export default PhotoStreamSnapCloudPage;
