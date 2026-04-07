@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { BriefcaseBusiness, Download, Menu, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { NAV_ITEMS, PROFILE } from "@/config/site";
 
@@ -69,18 +69,38 @@ const Navbar = () => {
         </a>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.href}>
-              <a
-                href={resolveHref(item.href)}
-                className="font-heading text-sm font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center gap-6">
+          <ul className="flex items-center gap-8">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={resolveHref(item.href)}
+                  className="font-heading text-sm font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={PROFILE.resumePath}
+            download="Muhammad-Sameer-Ali-CV.pdf"
+            className="inline-flex items-center gap-2 rounded-sm border border-primary/40 px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-primary transition-colors hover:bg-primary/10"
+          >
+            Download CV
+            <Download size={14} />
+          </a>
+          <a
+            href={PROFILE.hireMeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-sm bg-primary px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Hire Me
+            <BriefcaseBusiness size={14} />
+          </a>
+        </div>
 
         {/* Mobile toggle */}
         <button
@@ -113,6 +133,29 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href={PROFILE.resumePath}
+                  download="Muhammad-Sameer-Ali-CV.pdf"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center gap-2 rounded-sm border border-primary/40 px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-primary transition-colors hover:bg-primary/10"
+                >
+                  Download CV
+                  <Download size={14} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={PROFILE.hireMeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center gap-2 rounded-sm bg-primary px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-primary-foreground transition-opacity hover:opacity-90"
+                >
+                  Hire Me
+                  <BriefcaseBusiness size={14} />
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}

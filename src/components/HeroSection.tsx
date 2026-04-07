@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, ChevronDown, FileText } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { PROFILE } from "@/config/site";
 
@@ -57,14 +57,39 @@ const HeroSection = () => {
             className="inline-flex items-center justify-center gap-2 energy-gradient px-8 py-3 rounded-sm font-display text-sm font-bold uppercase tracking-wider text-primary-foreground hover:opacity-90 transition-opacity box-glow"
           >
             Explore My Projects
+            <ArrowRight size={16} />
           </a>
           <a
-            href="#contact"
+            href={PROFILE.resumePath}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 border border-primary/40 px-8 py-3 rounded-sm font-display text-sm font-bold uppercase tracking-wider text-primary hover:bg-primary/10 transition-colors"
           >
-            Let&apos;s Connect
+            View CV
+            <FileText size={16} />
+          </a>
+          <a
+            href={PROFILE.hireMeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 border border-accent/40 bg-accent/10 px-8 py-3 rounded-sm font-display text-sm font-bold uppercase tracking-wider text-accent hover:bg-accent/20 transition-colors"
+          >
+            Hire Me
+            <BriefcaseBusiness size={16} />
           </a>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.75 }}
+          className="mt-6 font-heading text-sm uppercase tracking-[0.2em] text-muted-foreground"
+        >
+          Open to building serious products.{" "}
+          <a href="#contact" className="text-primary transition-colors hover:text-accent">
+            Start a conversation
+          </a>
+        </motion.p>
       </div>
 
       {/* Scroll indicator */}

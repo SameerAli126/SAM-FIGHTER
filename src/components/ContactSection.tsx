@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, Send } from "lucide-react";
+import { Linkedin, Mail, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -78,6 +78,15 @@ const ContactSection = () => {
           <p className="font-heading text-muted-foreground mt-4 max-w-lg mx-auto">
             Let&apos;s discuss your next product and turn ideas into a reliable release.
           </p>
+          <a
+            href={PROFILE.hireMeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-sm border border-primary/40 px-6 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition-colors hover:bg-primary/10"
+          >
+            <Linkedin size={16} />
+            Hire Me on LinkedIn
+          </a>
           <p className="mt-4 inline-flex items-center gap-2 text-sm text-foreground/90">
             <Mail size={16} className="text-primary" />
             <a

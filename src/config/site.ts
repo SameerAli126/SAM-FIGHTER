@@ -26,14 +26,22 @@ export type Skill = {
   icon: LucideIcon;
 };
 
+export type ProjectLink = {
+  label: string;
+  href: string;
+  kind: "external" | "route";
+  tone?: "primary" | "muted";
+};
+
 export type Project = {
+  dateRange: string;
+  category: string;
   title: string;
   description: string;
+  impact: string;
   tech: string[];
   color: string;
-  route?: `/${string}`;
-  liveUrl?: string;
-  sourceUrl?: string;
+  links: ProjectLink[];
 };
 
 export type Achievement = {
@@ -63,6 +71,22 @@ export const SITE = {
   defaultDescription:
     "Portfolio of Muhammad Sameer Ali, a full-stack software engineer building fast, scalable web products across React, Next.js, FastAPI, Laravel, MongoDB, and PostgreSQL.",
   ogImage: "/og-image.jpg",
+  ogImageType: "image/jpeg",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  locale: "en_US",
+  defaultKeywords: [
+    "Muhammad Sameer Ali",
+    "full-stack software engineer",
+    "React developer",
+    "Next.js developer",
+    "TypeScript portfolio",
+    "FastAPI developer",
+    "Laravel developer",
+    "MongoDB",
+    "PostgreSQL",
+    "software engineer portfolio",
+  ],
   twitterHandle: "@theUninvited444",
 } as const;
 
@@ -78,6 +102,11 @@ export const PROFILE = {
   initials: "MSA",
   fullName: "Muhammad Sameer Ali",
   contactEmail: "khsameer626@gmail.com",
+  githubUrl: "https://github.com/SameerAli126",
+  linkedinUrl: "https://www.linkedin.com/in/sameerali126",
+  xUrl: "https://x.com/theUninvited444",
+  resumePath: "/muhammad-sameer-ali-cv.pdf",
+  hireMeUrl: "https://www.linkedin.com/in/sameerali126",
   roleLine: "Full-Stack Software Engineer",
   heroTitleLeading: "Unleash The",
   heroTitleAccent: "Power of Code",
@@ -119,61 +148,101 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
-    title: "OptiTrade 3.0",
-    description:
-      "A modern, data-driven stock trading app with portfolio management, stock screener, financial news, watchlist, and AI-powered diversification tips.",
-    tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "JWT Auth"],
-    color: "from-energy-red to-energy-orange",
-    route: "/projects/optitrade",
-    liveUrl: "https://opti-trade-3-0.vercel.app/",
-    sourceUrl: "https://github.com/SameerAli126/OptiTrade-3.0",
-  },
-  {
+    dateRange: "February 2023 - February 2024",
+    category: "Gamified Language Learning",
     title: "WordWanderer",
     description:
-      "A gamified language learning platform with XP systems, streak tracking, achievements, adaptive difficulty, voice recognition, and Mandarin support.",
+      "A backend-driven language learning platform with lessons, progress tracking, achievements, daily quests, streaks, hearts, gems, and power-up systems.",
+    impact:
+      "Built the first serious product loop in the portfolio, combining education, progression logic, and retention systems into one app.",
     tech: ["Next.js 14", "TypeScript", "Zustand", "MongoDB"],
     color: "from-energy-orange to-energy-gold",
-    route: "/projects/wordwanderer",
-    liveUrl: "https://wordwanderer.vercel.app",
-    sourceUrl: "https://github.com/SameerAli126/WordWanderer",
+    links: [
+      { label: "Live Demo", href: "https://wordwanderer.vercel.app", kind: "external", tone: "primary" },
+      { label: "Source", href: "https://github.com/SameerAli126/WordWanderer", kind: "external" },
+      { label: "Details", href: "/projects/wordwanderer", kind: "route" },
+    ],
   },
   {
+    dateRange: "October 2023 - September 2024",
+    category: "Fintech and Trading UX",
+    title: "OptiTrade 3.0",
+    description:
+      "A stock trading platform with portfolio monitoring, screeners, financial news, watchlists, JWT auth, and performance-focused market dashboards.",
+    impact:
+      "Expanded into a more data-dense product space with real-time trading workflows, secure auth, and complex portfolio views.",
+    tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "JWT Auth"],
+    color: "from-energy-red to-energy-orange",
+    links: [
+      { label: "Live Demo", href: "https://opti-trade-3-0.vercel.app/", kind: "external", tone: "primary" },
+      { label: "Source", href: "https://github.com/SameerAli126/OptiTrade-3.0", kind: "external" },
+      { label: "Details", href: "/projects/optitrade", kind: "route" },
+    ],
+  },
+  {
+    dateRange: "March 2024 - August 2024",
+    category: "AI-Assisted Business Tools",
     title: "InvoiceGen Pro",
     description:
-      "An AI-powered full-stack invoicing solution with Gemini 2.0 Flash chatbot, smart invoice generation, payment prediction analytics, and client management.",
+      "An invoicing platform with SSR-ready Next.js architecture, AI-assisted invoice creation, chatbot support, client management, PDF export, and analytics.",
+    impact:
+      "Pushed the portfolio into AI-enabled workflow software with more practical business value and production-style UX decisions.",
     tech: ["Next.js 15", "Gemini AI", "MongoDB", "Stripe"],
     color: "from-energy-gold to-energy-red",
-    route: "/projects/invoicegen-pro",
-    liveUrl: "https://invoicegen-pro.netlify.app/",
-    sourceUrl: "https://github.com/SameerAli126/invoicegen-pro",
+    links: [
+      { label: "Live Demo", href: "https://invoicegen-pro.netlify.app/", kind: "external", tone: "primary" },
+      { label: "Source", href: "https://github.com/SameerAli126/invoicegen-pro", kind: "external" },
+      { label: "Details", href: "/projects/invoicegen-pro", kind: "route" },
+    ],
   },
   {
+    dateRange: "March 2025 - July 2025",
+    category: "Creator Platforms and Media Infrastructure",
     title: "PhotoStream / SnapCloud",
     description:
-      "A cloud-native photo-sharing platform with creator and consumer roles, uploads, discovery, comments, likes, ratings, and two frontend implementations on one API.",
+      "A cloud-native photo-sharing platform with creator and consumer roles, uploads, search, comments, likes, ratings, and two frontend implementations on one API.",
+    impact:
+      "Validated one backend with two frontend directions, which is stronger portfolio evidence than a single UI skin over the same feature set.",
     tech: ["React", "TypeScript", "FastAPI", "MongoDB Atlas"],
     color: "from-energy-red to-energy-orange",
-    route: "/projects/photostream-snapcloud",
-    liveUrl: FUNNEL_LINKS.photostream,
+    links: [
+      { label: "Live Demo", href: FUNNEL_LINKS.photostream, kind: "external", tone: "primary" },
+      { label: "PhotoStream Code", href: "https://github.com/SameerAli126/PhotoStream", kind: "external" },
+      { label: "SnapCloud Code", href: "https://github.com/SameerAli126/snapcloud", kind: "external" },
+      { label: "Details", href: "/projects/photostream-snapcloud", kind: "route" },
+    ],
   },
   {
+    dateRange: "August 2025 - November 2025",
+    category: "Personal Finance and Life Ops",
     title: "SAMIO",
     description:
       "A local-first personal finance and life-ops dashboard with OTP auth, admin CRUD workflows, reports, budgeting, and structured PostgreSQL data models.",
+    impact:
+      "Moved deeper into operational software design with structured data models, admin flows, and day-to-day decision support features.",
     tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
     color: "from-energy-orange to-energy-gold",
-    route: "/projects/samio",
-    liveUrl: FUNNEL_LINKS.samio,
+    links: [
+      { label: "Live Demo", href: FUNNEL_LINKS.samio, kind: "external", tone: "primary" },
+      { label: "Source", href: "https://github.com/SameerAli126/SAMIO", kind: "external" },
+      { label: "Details", href: "/projects/samio", kind: "route" },
+    ],
   },
   {
+    dateRange: "December 2025 - March 2026",
+    category: "Public Data and GIS Systems",
     title: "Peshawar Civic GIS Atlas",
     description:
       "A Laravel-based civic GIS with public facility discovery, dataset ingestion, validation, RBAC, Leaflet mapping, and provenance-aware publishing workflows.",
+    impact:
+      "Showed range beyond standard SaaS and dashboards by shipping a public-facing data operations platform with genuine ingestion and publishing pipelines.",
     tech: ["Laravel", "PHP", "Leaflet", "MariaDB"],
     color: "from-energy-gold to-energy-red",
-    route: "/projects/peshawar-civic-gis-atlas",
-    liveUrl: FUNNEL_LINKS.civicAtlas,
+    links: [
+      { label: "Live Demo", href: FUNNEL_LINKS.civicAtlas, kind: "external", tone: "primary" },
+      { label: "Source", href: "https://github.com/SameerAli126/PCA", kind: "external" },
+      { label: "Details", href: "/projects/peshawar-civic-gis-atlas", kind: "route" },
+    ],
   },
 ];
 
@@ -194,7 +263,7 @@ export const TOURNAMENT_RESULTS: TournamentResult[] = [
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { icon: Github, href: "https://github.com/SameerAli126", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/sameerali126", label: "LinkedIn" },
-  { icon: Twitter, href: "https://x.com/theUninvited444", label: "X" },
+  { icon: Github, href: PROFILE.githubUrl, label: "GitHub" },
+  { icon: Linkedin, href: PROFILE.linkedinUrl, label: "LinkedIn" },
+  { icon: Twitter, href: PROFILE.xUrl, label: "X" },
 ];
