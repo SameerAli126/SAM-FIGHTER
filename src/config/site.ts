@@ -70,8 +70,8 @@ export const SITE = {
   defaultTitle: "Muhammad Sameer Ali | Full-Stack Software Engineer",
   defaultDescription:
     "Portfolio of Muhammad Sameer Ali, a full-stack software engineer building fast, scalable web products across React, Next.js, FastAPI, Laravel, MongoDB, and PostgreSQL.",
-  ogImage: "/og-image.jpg",
-  ogImageType: "image/jpeg",
+  ogImage: "/og-image.png",
+  ogImageType: "image/png",
   ogImageWidth: 1200,
   ogImageHeight: 630,
   locale: "en_US",
