@@ -10,9 +10,9 @@ const distDir = path.join(rootDir, "dist");
 const SITE = {
   url: "https://msameerali.dev",
   name: "Muhammad Sameer Ali Portfolio",
-  defaultImage: "/og-image.jpg",
+  defaultImage: "/og-image.png",
   imageAlt: "Muhammad Sameer Ali portfolio preview",
-  imageType: "image/jpeg",
+  imageType: "image/png",
   imageWidth: 1200,
   imageHeight: 630,
   twitterHandle: "@theUninvited444",
