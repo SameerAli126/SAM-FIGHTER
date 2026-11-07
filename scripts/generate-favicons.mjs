@@ -47,13 +47,13 @@ const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" 
   <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#fav-glow)"/>
 
   <!-- Code Bracket < (Top S loop) -->
-  <path d="M 47 16.5 H 26 C 20.2 16.5 15.5 21.2 15.5 27 C 15.5 30.6 17.5 33.8 20.6 35.5 L 26.5 39" fill="none" stroke="url(#fav-cyan)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 47 16.5 H 26 C 20.2 16.5 15.5 21.2 15.5 27 C 15.5 30.8 17.6 34.2 20.8 36 L 26 38" fill="none" stroke="url(#fav-cyan)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Code Bracket > (Bottom S loop) -->
-  <path d="M 17 47.5 H 38 C 43.8 47.5 48.5 42.8 48.5 37 C 48.5 33.4 46.5 30.2 43.4 28.5 L 37.5 25" fill="none" stroke="url(#fav-blue)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 17 47.5 H 38 C 43.8 47.5 48.5 42.8 48.5 37 C 48.5 33.2 46.4 29.8 43.2 28 L 38 26" fill="none" stroke="url(#fav-blue)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Nexus Slash Core / -->
-  <path d="M 23 41 L 41 23" fill="none" stroke="url(#fav-slash)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 22 42 L 42 22" fill="none" stroke="url(#fav-slash)" stroke-width="6" stroke-linecap="round"/>
 
   <!-- Optical Code Nodes -->
   <circle cx="15.5" cy="27" r="1.5" fill="#ffffff" opacity="0.95"/>

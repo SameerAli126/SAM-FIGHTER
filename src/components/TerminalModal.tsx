@@ -22,7 +22,7 @@ export const TerminalModal = ({ isOpen, onClose }: TerminalModalProps) => {
     {
       id: "init-1",
       type: "system",
-      text: "MSA Interactive Console v2.5.0 (x86_64-node-enterprise)",
+      text: "SAM.OS Interactive Console v2.5.0 (x86_64-node-enterprise)",
     },
     {
       id: "init-2",

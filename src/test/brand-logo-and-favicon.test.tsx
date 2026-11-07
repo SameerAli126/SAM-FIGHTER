@@ -157,4 +157,26 @@ describe("Integration Across Components", () => {
     const footerLogo = screen.getByRole("img", { name: /Sameer Ali - Software Architecture/i });
     expect(footerLogo).toBeInTheDocument();
   });
+
+  it("verifies legacy MSA badge has been removed from og-image.svg", () => {
+    const ogSvgPath = path.join(publicDir, "og-image.svg");
+    if (fs.existsSync(ogSvgPath)) {
+      const content = fs.readFileSync(ogSvgPath, "utf8");
+      expect(content).not.toContain(">MSA<");
+      expect(content).toContain("SAMEER ALI");
+    }
+  });
+
+  it("verifies BrandLogo paths use mathematically aligned endpoints and stroke width", () => {
+    const { container } = render(<BrandLogo size={64} />);
+    const paths = Array.from(container.querySelectorAll("path"));
+    const dValues = paths.map((p) => p.getAttribute("d"));
+
+    // Top loop ends at (26, 38)
+    expect(dValues.some((d) => d?.includes("L 26 38"))).toBe(true);
+    // Bottom loop starts at (38, 26)
+    expect(dValues.some((d) => d?.includes("L 38 26"))).toBe(true);
+    // Slash passes from (22, 42) to (42, 22) with stroke-width 6
+    expect(dValues.some((d) => d?.includes("M 22 42 L 42 22"))).toBe(true);
+  });
 });

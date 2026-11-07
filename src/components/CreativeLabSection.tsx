@@ -1170,7 +1170,10 @@ export const CreativeLabSection = () => {
                               className="space-y-2 p-2.5 rounded-2xl bg-neutral-950/90 border border-purple-500/40 font-mono text-[9px] relative"
                             >
                               <div className="flex items-center justify-between text-purple-300 font-bold border-b border-purple-500/30 pb-1">
-                                <span>MSA BEAT MACHINE</span>
+                                <div className="flex items-center gap-1.5">
+                                  <BrandLogo size={11} variant="minimal" className="w-3 h-3 text-purple-400" />
+                                  <span>SAM BEAT MACHINE</span>
+                                </div>
                                 <span className="text-cyan-400">128 BPM</span>
                               </div>
 

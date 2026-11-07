@@ -182,7 +182,7 @@ describe("Interactive Portfolio Components", () => {
     const chipContainer = helpChip.closest(".overflow-x-auto");
     expect(chipContainer).toHaveClass("no-scrollbar");
     expect(chipContainer).toHaveClass("scrollbar-none");
-    const outputBuffer = screen.getByText(/MSA Interactive Console/i).closest(".overflow-y-auto");
+    const outputBuffer = screen.getByText(/SAM\.OS Interactive Console/i).closest(".overflow-y-auto");
     expect(outputBuffer).toHaveClass("custom-scrollbar");
     unmountTerminal();
   });

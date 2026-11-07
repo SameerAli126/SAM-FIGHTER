@@ -120,7 +120,7 @@ describe("CreativeLabSection & Audio Synthesizer", () => {
     // Switch to Beat Machine mode
     const synthModeBtn = screen.getByRole("button", { name: /beat machine/i });
     fireEvent.click(synthModeBtn);
-    expect(screen.getByText(/MSA BEAT MACHINE/i)).toBeInTheDocument();
+    expect(screen.getByText(/SAM BEAT MACHINE/i)).toBeInTheDocument();
 
     // Tap synth pad
     const kickPad = screen.getByRole("button", { name: /kick 01/i });

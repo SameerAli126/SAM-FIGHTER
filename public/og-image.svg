@@ -84,7 +84,7 @@
       <rect x="858" y="122" width="246" height="316" rx="28" fill="url(#heroGlow)" opacity="0.22"/>
     </g>
     <rect x="874" y="454" width="214" height="60" rx="18" fill="#121a2f" stroke="#26324d"/>
-    <text x="981" y="480" text-anchor="middle" fill="#f4c95d" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" letter-spacing="3">MSA</text>
+    <text x="981" y="480" text-anchor="middle" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="800" letter-spacing="2">SAMEER ALI</text>
     <text x="981" y="502" text-anchor="middle" fill="#d4d9e4" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">msameerali.dev</text>
   </g>
 </svg>
