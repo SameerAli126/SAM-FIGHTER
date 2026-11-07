@@ -1,4 +1,5 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import fs from "node:fs";
+import { copyFile, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -317,23 +318,53 @@ async function writeRouteHtml(route, baseHtml) {
 
   const cleanSlug = route.path.replace(/^\//, "");
   const directHtmlPath = path.join(distDir, `${cleanSlug}.html`);
-  const nestedIndexPath = path.join(distDir, cleanSlug, "index.html");
+  const legacyNestedDir = path.join(distDir, cleanSlug);
+
+  // Eliminate Vercel static route collision: cleanUrls serves [cleanSlug].html.
+  // Any legacy nested directory [cleanSlug]/index.html will trigger a duplicate route error.
+  await rm(legacyNestedDir, { recursive: true, force: true });
 
   await mkdir(path.dirname(directHtmlPath), { recursive: true });
   await writeFile(directHtmlPath, content, "utf8");
+}
 
-  await mkdir(path.dirname(nestedIndexPath), { recursive: true });
-  await writeFile(nestedIndexPath, content, "utf8");
+async function syncPublicAssets() {
+  const publicDir = path.join(rootDir, "public");
+  if (!fs.existsSync(publicDir) || !fs.existsSync(distDir)) {
+    return;
+  }
+
+  try {
+    const entries = await readdir(publicDir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isFile()) {
+        const src = path.join(publicDir, entry.name);
+        const dest = path.join(distDir, entry.name);
+        if (!fs.existsSync(dest)) {
+          await copyFile(src, dest);
+        }
+      }
+    }
+  } catch (err) {
+    console.warn(`Asset sync warning: ${err.message}`);
+  }
 }
 
 async function main() {
-  const baseHtml = await readFile(path.join(distDir, "index.html"), "utf8");
+  await mkdir(distDir, { recursive: true });
+
+  const distIndexPath = path.join(distDir, "index.html");
+  const rootIndexPath = path.join(rootDir, "index.html");
+  const baseHtml = fs.existsSync(distIndexPath)
+    ? await readFile(distIndexPath, "utf8")
+    : await readFile(rootIndexPath, "utf8");
 
   for (const route of ROUTES) {
     await writeRouteHtml(route, baseHtml);
   }
 
   await writeFile(path.join(distDir, "404.html"), applySeo(baseHtml, NOT_FOUND), "utf8");
+  await syncPublicAssets();
 }
 
 await main();

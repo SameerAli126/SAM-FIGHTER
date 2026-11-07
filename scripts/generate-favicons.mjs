@@ -71,22 +71,31 @@ if (fs.existsSync(distDir)) {
 }
 
 // Locate Chrome or Edge executable
+const isCI = Boolean(process.env.CI || process.env.VERCEL || process.env.NETLIFY);
 let browserExec = null;
-const possiblePaths = [
-  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-  (process.env.LOCALAPPDATA || "") + "\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
-  "/usr/bin/google-chrome",
-  "/usr/bin/chromium-browser",
-  "/usr/bin/chromium",
-];
 
-for (const p of possiblePaths) {
-  if (p && fs.existsSync(p)) {
-    browserExec = p;
-    break;
+if (isCI && !process.env.CHROME_BIN) {
+  console.log("CI/Vercel build environment without CHROME_BIN: using pre-generated icon assets.");
+} else {
+  const possiblePaths = [
+    process.env.CHROME_BIN,
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    (process.env.LOCALAPPDATA || "") + "\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+  ].filter(Boolean);
+
+  for (const p of possiblePaths) {
+    if (p && fs.existsSync(p)) {
+      browserExec = p;
+      break;
+    }
   }
 }
 
@@ -125,7 +134,7 @@ function renderPngAtSize(size, outputPath) {
   const fileUrl = `file:///${tempHtml.replace(/\\/g, "/")}`;
 
   execSync(
-    `"${browserExec}" --headless=new --disable-gpu --window-size=${size},${size} --default-background-color=00000000 --hide-scrollbars --screenshot="${tempPng}" "${fileUrl}"`,
+    `"${browserExec}" --headless=new --no-sandbox --disable-gpu --window-size=${size},${size} --default-background-color=00000000 --hide-scrollbars --screenshot="${tempPng}" "${fileUrl}"`,
     { stdio: "ignore" }
   );
 

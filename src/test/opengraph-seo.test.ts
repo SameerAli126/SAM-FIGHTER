@@ -114,11 +114,10 @@ describe("OpenGraph and Social Media Preview Validation", () => {
   });
 
   it("verifies pre-rendered dist/index.html and all static project routes have raw server-rendered meta tags", () => {
-    // If dist is not yet generated, trigger static generation
+    // Ensure static routes are freshly generated
+    execSync("node scripts/generate-static-seo-pages.mjs", { cwd: rootDir });
+
     const distIndexPath = path.join(distDir, "index.html");
-    if (!fs.existsSync(distIndexPath)) {
-      execSync("node scripts/generate-static-seo-pages.mjs", { cwd: rootDir });
-    }
 
     expect(fs.existsSync(distIndexPath)).toBe(true);
     const distHtml = fs.readFileSync(distIndexPath, "utf8");
@@ -141,7 +140,7 @@ describe("OpenGraph and Social Media Preview Validation", () => {
       const nestedPath = path.join(distDir, "projects", slug, "index.html");
 
       expect(fs.existsSync(directPath)).toBe(true);
-      expect(fs.existsSync(nestedPath)).toBe(true);
+      expect(fs.existsSync(nestedPath)).toBe(false);
 
       const directHtml = fs.readFileSync(directPath, "utf8");
       expect(directHtml).toContain('property="og:image" content="https://msameerali.dev/og-image.png"');

@@ -18,22 +18,31 @@ const tempScreenshotPng = path.join(process.env.TEMP || "C:\\Windows\\Temp", "te
 const tempScreenshotJpg = path.join(process.env.TEMP || "C:\\Windows\\Temp", "temp-og-shot.jpg");
 
 // 1. Locate Chrome or Edge executable
+const isCI = Boolean(process.env.CI || process.env.VERCEL || process.env.NETLIFY);
 let browserExec = null;
-const possiblePaths = [
-  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-  process.env.LOCALAPPDATA + "\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
-  "/usr/bin/google-chrome",
-  "/usr/bin/chromium-browser",
-  "/usr/bin/chromium",
-];
 
-for (const p of possiblePaths) {
-  if (p && fs.existsSync(p)) {
-    browserExec = p;
-    break;
+if (isCI && !process.env.CHROME_BIN) {
+  console.log("CI/Vercel build environment without CHROME_BIN: using pre-generated OG assets.");
+} else {
+  const possiblePaths = [
+    process.env.CHROME_BIN,
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    (process.env.LOCALAPPDATA || "") + "\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+  ].filter(Boolean);
+
+  for (const p of possiblePaths) {
+    if (p && fs.existsSync(p)) {
+      browserExec = p;
+      break;
+    }
   }
 }
 
@@ -597,7 +606,7 @@ if (browserExec) {
 
     // Render PNG
     execSync(
-      `"${browserExec}" --headless=new --disable-gpu --window-size=1200,630 --hide-scrollbars --screenshot="${tempScreenshotPng}" "${fileUrl}"`,
+      `"${browserExec}" --headless=new --no-sandbox --disable-gpu --window-size=1200,630 --hide-scrollbars --screenshot="${tempScreenshotPng}" "${fileUrl}"`,
       { stdio: "inherit" }
     );
 
@@ -610,7 +619,7 @@ if (browserExec) {
 
     // Render JPG
     execSync(
-      `"${browserExec}" --headless=new --disable-gpu --window-size=1200,630 --hide-scrollbars --screenshot="${tempScreenshotJpg}" "${fileUrl}"`,
+      `"${browserExec}" --headless=new --no-sandbox --disable-gpu --window-size=1200,630 --hide-scrollbars --screenshot="${tempScreenshotJpg}" "${fileUrl}"`,
       { stdio: "inherit" }
     );
     const rawJpg = fs.readFileSync(tempScreenshotJpg);
@@ -622,14 +631,26 @@ if (browserExec) {
   } catch (err) {
     console.warn(`Browser OG image generation encountered error: ${err.message}`);
   } finally {
-    if (fs.existsSync(tempHtmlPath)) {
-      fs.unlinkSync(tempHtmlPath);
+    try {
+      if (fs.existsSync(tempHtmlPath)) {
+        fs.unlinkSync(tempHtmlPath);
+      }
+    } catch {
+      // Ignore cleanup error
     }
-    if (fs.existsSync(tempScreenshotPng)) {
-      fs.unlinkSync(tempScreenshotPng);
+    try {
+      if (fs.existsSync(tempScreenshotPng)) {
+        fs.unlinkSync(tempScreenshotPng);
+      }
+    } catch {
+      // Ignore cleanup error
     }
-    if (fs.existsSync(tempScreenshotJpg)) {
-      fs.unlinkSync(tempScreenshotJpg);
+    try {
+      if (fs.existsSync(tempScreenshotJpg)) {
+        fs.unlinkSync(tempScreenshotJpg);
+      }
+    } catch {
+      // Ignore cleanup error
     }
   }
 } else {

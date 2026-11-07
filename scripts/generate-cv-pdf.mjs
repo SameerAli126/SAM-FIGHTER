@@ -313,25 +313,32 @@ const candidatePaths = [
   "/usr/bin/chromium-browser",
 ].filter(Boolean);
 
-let browserExec = candidatePaths.find((p) => {
-  try {
-    return fs.existsSync(p);
-  } catch {
-    return false;
-  }
-});
+const isCI = Boolean(process.env.CI || process.env.VERCEL || process.env.NETLIFY);
 
-if (!browserExec) {
-  // Try finding via `which` or `where`
-  try {
-    const isWin = process.platform === "win32";
-    const lookupCmd = isWin ? "where chrome edge msedge 2>nul" : "which google-chrome google-chrome-stable chromium chromium-browser 2>/dev/null";
-    const found = execSync(lookupCmd, { encoding: "utf8" }).trim().split(/\r?\n/)[0];
-    if (found && fs.existsSync(found)) {
-      browserExec = found;
+let browserExec = null;
+if (isCI && !process.env.CHROME_BIN) {
+  console.log("CI/Vercel build environment without CHROME_BIN: using pre-generated CV PDF.");
+} else {
+  browserExec = candidatePaths.find((p) => {
+    try {
+      return fs.existsSync(p);
+    } catch {
+      return false;
     }
-  } catch {
-    // lookup failed
+  });
+
+  if (!browserExec) {
+    // Try finding via `which` or `where`
+    try {
+      const isWin = process.platform === "win32";
+      const lookupCmd = isWin ? "where chrome edge msedge 2>nul" : "which google-chrome google-chrome-stable chromium chromium-browser 2>/dev/null";
+      const found = execSync(lookupCmd, { encoding: "utf8" }).trim().split(/\r?\n/)[0];
+      if (found && fs.existsSync(found)) {
+        browserExec = found;
+      }
+    } catch {
+      // lookup failed
+    }
   }
 }
 
@@ -340,7 +347,7 @@ try {
     console.log(`Using browser: ${browserExec}`);
     try {
       execSync(
-        `"${browserExec}" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="${publicPdfPath}" "${tempHtmlPath}"`,
+        `"${browserExec}" --headless --no-sandbox --disable-gpu --no-pdf-header-footer --print-to-pdf="${publicPdfPath}" "${tempHtmlPath}"`,
         { stdio: "inherit" }
       );
       console.log(`Successfully generated public PDF: ${publicPdfPath} (${fs.statSync(publicPdfPath).size} bytes)`);
@@ -363,8 +370,12 @@ try {
     console.log(`Synced to dist PDF: ${distPdfPath}`);
   }
 } finally {
-  if (fs.existsSync(tempHtmlPath)) {
-    fs.unlinkSync(tempHtmlPath);
+  try {
+    if (fs.existsSync(tempHtmlPath)) {
+      fs.unlinkSync(tempHtmlPath);
+    }
+  } catch {
+    // Ignore cleanup errors
   }
 }
 
