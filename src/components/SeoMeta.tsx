@@ -16,7 +16,7 @@ function toAbsoluteUrl(value: string) {
   return new URL(value, `${SITE.url}/`).toString();
 }
 
-function setMetaTag(attribute: "name" | "property", key: string, content: string) {
+function setMetaTag(attribute: "name" | "property" | "itemprop", key: string, content: string) {
   let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
 
   if (!element) {
@@ -143,7 +143,7 @@ const SeoMeta = ({
   description = SITE.defaultDescription,
   path = "/",
   image = SITE.ogImage,
-  imageAlt = `${PROFILE.fullName} portfolio preview`,
+  imageAlt = `${PROFILE.fullName} | Frontend / Full-Stack Developer Portfolio Preview`,
   keywords = SITE.defaultKeywords,
   type = "website",
   noindex = false,
@@ -156,11 +156,12 @@ const SeoMeta = ({
     document.title = title;
     setCanonical(canonicalUrl);
 
+    setMetaTag("name", "title", title);
     setMetaTag("name", "description", description);
     setMetaTag("name", "author", PROFILE.fullName);
     setMetaTag("name", "creator", PROFILE.fullName);
     setMetaTag("name", "publisher", PROFILE.fullName);
-    setMetaTag("name", "theme-color", "#0c111a");
+    setMetaTag("name", "theme-color", "#030712");
     setMetaTag("name", "keywords", resolvedKeywords);
     setMetaTag("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
 
@@ -185,6 +186,11 @@ const SeoMeta = ({
     setMetaTag("name", "twitter:url", canonicalUrl);
     setMetaTag("name", "twitter:image", imageUrl);
     setMetaTag("name", "twitter:image:alt", imageAlt);
+
+    setMetaTag("name", "image", imageUrl);
+    setMetaTag("itemprop", "name", title);
+    setMetaTag("itemprop", "description", description);
+    setMetaTag("itemprop", "image", imageUrl);
 
     setStructuredData(
       buildStructuredData({

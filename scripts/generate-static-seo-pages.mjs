@@ -11,7 +11,7 @@ const SITE = {
   url: "https://msameerali.dev",
   name: "Muhammad Sameer Ali Portfolio",
   defaultImage: "/og-image.png",
-  imageAlt: "Muhammad Sameer Ali portfolio preview",
+  imageAlt: "Muhammad Sameer Ali | Frontend / Full-Stack Developer Portfolio Preview",
   imageType: "image/png",
   imageWidth: 1200,
   imageHeight: 630,
@@ -240,13 +240,18 @@ function applySeo(html, meta) {
   const imageUrl = toAbsoluteUrl(SITE.defaultImage);
   const keywords = Array.from(new Set(meta.keywords)).join(", ");
 
+  if (!html.includes('prefix="og: https://ogp.me/ns#"')) {
+    html = html.replace(/<html([^>]*)>/i, '<html$1 prefix="og: https://ogp.me/ns#">');
+  }
+
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${meta.title}</title>`);
   html = upsertLink(html, "canonical", canonicalUrl);
+  html = upsertMeta(html, "name", "title", meta.title);
   html = upsertMeta(html, "name", "description", meta.description);
   html = upsertMeta(html, "name", "author", SITE.person.name);
   html = upsertMeta(html, "name", "creator", SITE.person.name);
   html = upsertMeta(html, "name", "publisher", SITE.person.name);
-  html = upsertMeta(html, "name", "theme-color", "#0c111a");
+  html = upsertMeta(html, "name", "theme-color", "#030712");
   html = upsertMeta(html, "name", "robots", meta.noindex ? "noindex, nofollow" : "index, follow");
   html = upsertMeta(html, "name", "keywords", keywords);
   html = upsertMeta(html, "property", "og:site_name", SITE.name);
@@ -269,6 +274,10 @@ function applySeo(html, meta) {
   html = upsertMeta(html, "name", "twitter:url", canonicalUrl);
   html = upsertMeta(html, "name", "twitter:image", imageUrl);
   html = upsertMeta(html, "name", "twitter:image:alt", SITE.imageAlt);
+  html = upsertMeta(html, "name", "image", imageUrl);
+  html = upsertMeta(html, "itemprop", "name", meta.title);
+  html = upsertMeta(html, "itemprop", "description", meta.description);
+  html = upsertMeta(html, "itemprop", "image", imageUrl);
   html = upsertStructuredData(html, buildStructuredData(meta, canonicalUrl, imageUrl));
 
   return html;
