@@ -239,9 +239,9 @@ const ogHtml = `<!DOCTYPE html>
     }
     .editorial-sub {
       font-size: 14px;
-      line-height: 1.45;
+      line-height: 1.5;
       color: #94a3b8;
-      max-width: 620px;
+      max-width: 640px;
     }
 
     /* Modern tech stack chips */
@@ -357,9 +357,9 @@ const ogHtml = `<!DOCTYPE html>
       width: 335px;
       height: 490px;
       border-radius: 26px;
-      background: linear-gradient(180deg, rgba(13, 21, 38, 0.75) 0%, rgba(8, 12, 22, 0.96) 100%);
-      border: 1.5px solid rgba(56, 189, 248, 0.35);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(6, 182, 212, 0.16);
+      background: linear-gradient(180deg, rgba(13, 21, 38, 0.82) 0%, rgba(8, 12, 22, 0.98) 100%);
+      border: 1.5px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(6, 182, 212, 0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -376,13 +376,13 @@ const ogHtml = `<!DOCTYPE html>
       z-index: 10;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(4, 47, 46, 0.9);
-      border: 1px solid rgba(52, 211, 153, 0.7);
+      gap: 7px;
+      padding: 5px 13px;
+      background: rgba(4, 38, 38, 0.92);
+      border: 1px solid rgba(52, 211, 153, 0.65);
       border-radius: 9999px;
       white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 14px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 10px rgba(16, 185, 129, 0.3);
     }
     .status-pulse-dot {
       width: 8px;
@@ -405,13 +405,13 @@ const ogHtml = `<!DOCTYPE html>
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 15%;
+      object-position: center 25%;
       z-index: 1;
     }
     .portrait-vignette {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(8, 10, 16, 0.2) 0%, transparent 25%, rgba(8, 10, 16, 0.5) 75%, #080a10 100%);
+      background: linear-gradient(180deg, rgba(8, 10, 16, 0.3) 0%, transparent 22%, rgba(8, 10, 16, 0.4) 75%, #080a10 100%);
       z-index: 2;
     }
     .portrait-footer {
@@ -460,17 +460,15 @@ const ogHtml = `<!DOCTYPE html>
 
     <!-- Constellation vector overlay -->
     <svg class="constellation-layer" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-      <line x1="96" y1="72" x2="240" y2="48" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="240" y1="48" x2="432" y2="80" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="624" y1="64" x2="768" y2="96" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="120" y1="520" x2="312" y2="560" stroke="rgba(56, 189, 248, 0.15)" stroke-width="1" stroke-dasharray="4 4" />
-      <circle cx="96" cy="72" r="2.5" fill="#22d3ee" opacity="0.7" />
-      <circle cx="240" cy="48" r="3.5" fill="#38bdf8" opacity="0.9" />
-      <circle cx="432" cy="80" r="2.5" fill="#22d3ee" opacity="0.7" />
-      <circle cx="624" cy="64" r="3" fill="#38bdf8" opacity="0.8" />
-      <circle cx="768" cy="96" r="2.5" fill="#22d3ee" opacity="0.7" />
-      <circle cx="120" cy="520" r="2.5" fill="#22d3ee" opacity="0.6" />
-      <circle cx="312" cy="560" r="3" fill="#38bdf8" opacity="0.8" />
+      <line x1="96" y1="40" x2="240" y2="24" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="640" y1="48" x2="768" y2="72" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="710" y1="280" x2="750" y2="360" stroke="rgba(56, 189, 248, 0.16)" stroke-width="1" stroke-dasharray="4 4" />
+      <circle cx="96" cy="40" r="2.5" fill="#22d3ee" opacity="0.7" />
+      <circle cx="240" cy="24" r="3" fill="#38bdf8" opacity="0.9" />
+      <circle cx="640" cy="48" r="2.5" fill="#22d3ee" opacity="0.7" />
+      <circle cx="768" cy="72" r="3" fill="#38bdf8" opacity="0.8" />
+      <circle cx="710" cy="280" r="2.5" fill="#22d3ee" opacity="0.6" />
+      <circle cx="750" cy="360" r="3" fill="#38bdf8" opacity="0.7" />
       <path d="M72 192 v6 M69 195 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
       <path d="M576 144 v6 M573 147 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
       <path d="M720 480 v6 M717 483 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
@@ -502,7 +500,7 @@ const ogHtml = `<!DOCTYPE html>
         <div class="editorial-callout">
           <div class="editorial-headline">"Architecting Resilient Modern Web Systems"</div>
           <p class="editorial-sub">
-            Engineering high-performance enterprise applications, interactive 3D web experiences, and real-time streaming architectures.
+            Engineering high-performance enterprise applications, interactive 3D web experiences,<br>and real-time streaming architectures.
           </p>
         </div>
       </div>
