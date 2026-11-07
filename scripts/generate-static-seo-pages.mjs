@@ -97,6 +97,23 @@ const ROUTES = [
     sourceCode: "https://github.com/SameerAli126/WordWanderer",
     techStack: ["Next.js 14", "TypeScript", "Zustand", "MongoDB Atlas", "Tailwind CSS"],
     impact: "Engineered comprehensive gamification progression logic, spaced repetition algorithms, and retention loops.",
+    problemStatement:
+      "WordWanderer resolves student attrition in online self-study by synthesizing cognitive spaced repetition (SRS) algorithms with optimistic client state synchronization in Zustand, driving daily lesson completion loops and verifiable pronunciation accuracy.",
+    subsystems: [
+      { title: "Algorithmic Spaced Repetition (SRS)", desc: "Calculates exponential memory decay curves and intervals based on recall history to optimize vocabulary retention." },
+      { title: "Optimistic State & IndexedDB Synchronization", desc: "Zustand client state synchronization backed by MongoDB Atlas aggregation pipelines and offline IndexedDB persistence." },
+      { title: "Adaptive Multi-Modal Question Runner", desc: "Interactive exercise engine supporting speech pronunciation confidence scoring, Hanzi stroke order tracing, and sentence synthesis." },
+    ],
+    faqs: [
+      {
+        question: "What is the technical architecture of WordWanderer?",
+        answer: "WordWanderer is an educational web application architected with Next.js 14, TypeScript, Zustand, and MongoDB Atlas. It features an algorithmic spaced repetition system (SRS) scheduler, optimistic client state synchronization, and offline-first IndexedDB lesson caching.",
+      },
+      {
+        question: "How does WordWanderer handle offline lesson progress?",
+        answer: "WordWanderer stores lesson progression and offline exercise submissions in browser IndexedDB. Upon reconnecting, an optimistic background sync queue commits mutations to MongoDB Atlas without interrupting the active audio and quiz runner.",
+      },
+    ],
   },
   {
     path: "/projects/optitrade",
@@ -111,6 +128,23 @@ const ROUTES = [
     sourceCode: "https://github.com/SameerAli126/OptiTrade-3.0",
     techStack: ["Next.js 15", "TypeScript", "Node.js", "PostgreSQL", "TanStack Query", "JWT"],
     impact: "Migrated a React frontend to Next.js, integrating stock APIs into responsive market dashboards with sub-15ms calculations.",
+    problemStatement:
+      "OptiTrade 3.0 eliminates rendering latency and state desynchronization in volatile stock market dashboards. By combining Next.js 15 with TanStack Query caching, portfolio analytics execute in under 15ms while market watchlists stay consistently synchronized.",
+    subsystems: [
+      { title: "Sub-15ms Analytics Engine", desc: "High-frequency portfolio calculation computing unrealized P&L, weighted cost bases, and allocation distributions in under 15ms." },
+      { title: "Market API Data Pipeline", desc: "Aggressive query caching, stale-while-revalidate policies, and request deduplication via TanStack Query." },
+      { title: "Stateless Token Security", desc: "Cryptographically signed JWT authorization with automatic refresh token rotation stored in secure HTTP-only cookies." },
+    ],
+    faqs: [
+      {
+        question: "What architectural challenges does OptiTrade 3.0 solve?",
+        answer: "OptiTrade 3.0 resolves high-latency rendering and state fragmentation in fintech dashboards. It utilizes Next.js 15, PostgreSQL, and TanStack Query to execute portfolio calculations in under 15ms with seamless real-time market data caching.",
+      },
+      {
+        question: "How does OptiTrade secure financial data and user sessions?",
+        answer: "OptiTrade implements stateless JSON Web Token (JWT) authentication combined with cryptographically signed refresh tokens stored in secure, SameSite HTTP-only cookies to prevent cross-site scripting (XSS) and token exfiltration.",
+      },
+    ],
   },
   {
     path: "/projects/invoicegen-pro",
@@ -125,6 +159,23 @@ const ROUTES = [
     sourceCode: "https://github.com/SameerAli126/invoicegen-pro",
     techStack: ["Next.js 15", "Gemini AI", "MongoDB Atlas", "Stripe", "Tailwind CSS"],
     impact: "Integrated Gemini AI for automated invoice drafting, client business card extraction, and payment processing.",
+    problemStatement:
+      "InvoiceGen Pro streamlines billing operations for freelancers and agencies by transforming unstructured user prompts and receipts into verified, mathematically reconciled invoice drafts using Google Gemini AI, backed by automated Stripe payment settlement.",
+    subsystems: [
+      { title: "Gemini AI Parsing Pipeline", desc: "Multimodal prompt processing extracting structured line items, currency symbols, and client details from unstructured text and images." },
+      { title: "Stripe Payment Gateway", desc: "Automated checkout session creation and asynchronous webhook processing for immediate invoice status updates." },
+      { title: "High-Fidelity PDF Generation", desc: "Client-side and server-side PDF compilation producing standardized, branded invoices with payment QR codes." },
+    ],
+    faqs: [
+      {
+        question: "How does InvoiceGen Pro utilize Gemini AI?",
+        answer: "InvoiceGen Pro utilizes Google's Gemini AI to parse unstructured user prompts, client business cards, and receipt images into line-itemized, mathematically verified invoice drafts with automatic currency detection and tax calculations.",
+      },
+      {
+        question: "How are payments and financial transactions processed?",
+        answer: "The platform integrates Stripe checkout sessions and asynchronous webhooks, automatically marking invoices as paid and updating client accounts receivable in MongoDB Atlas upon successful payment confirmation.",
+      },
+    ],
   },
   {
     path: "/projects/photostream-snapcloud",
@@ -139,6 +190,23 @@ const ROUTES = [
     sourceCode: "https://github.com/SameerAli126/PhotoStream",
     techStack: ["React", "TypeScript", "Vite", "FastAPI", "MongoDB Atlas", "Cloudinary"],
     impact: "Handled photo uploads, search, and social interactions with Cloudinary media delivery and MongoDB Atlas metadata persistence.",
+    problemStatement:
+      "PhotoStream and SnapCloud solve high-concurrency media ingestion and viewing across disparate devices by providing specialized desktop and mobile clients powered by a unified asynchronous Python FastAPI microservice and Cloudinary edge CDN.",
+    subsystems: [
+      { title: "FastAPI Asynchronous Microservice", desc: "Non-blocking Python service handling chunked image streaming, EXIF metadata extraction, and tag-based search." },
+      { title: "Edge CDN Media Delivery", desc: "Cloudinary CDN integration with automatic WebP conversion, responsive sizing, and edge-cached asset delivery." },
+      { title: "Dual Specialized Frontend Architectures", desc: "Desktop photography atelier showcasing high-res galleries alongside a touch-optimized mobile social feed." },
+    ],
+    faqs: [
+      {
+        question: "Why does the platform maintain dual frontend implementations?",
+        answer: "PhotoStream provides a desktop atelier optimized for high-resolution photo portfolios, while SnapCloud delivers a touch-optimized social feed. Both applications interface with a shared asynchronous FastAPI backend service.",
+      },
+      {
+        question: "How is image processing and media delivery optimized?",
+        answer: "Uploaded images are dispatched to an asynchronous FastAPI microservice that extracts EXIF metadata before streaming assets to Cloudinary for on-the-fly WebP conversion and CDN distribution.",
+      },
+    ],
   },
   {
     path: "/projects/samio",
@@ -153,6 +221,23 @@ const ROUTES = [
     sourceCode: "https://github.com/SameerAli126/SAMIO",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma ORM", "PostgreSQL"],
     impact: "Built relational PostgreSQL schemas with Prisma ORM, financial transaction integrity, and administrative CRUD workflows.",
+    problemStatement:
+      "SAMIO addresses personal privacy and financial data fragmentation by offering a local-first personal operations dashboard with passwordless authentication, strict relational database constraints, and zero-lock-in data export capabilities.",
+    subsystems: [
+      { title: "Passwordless OTP Authentication", desc: "Secure email One-Time Password verification generating cryptographically signed, tamper-resistant session cookies." },
+      { title: "Relational Schema Integrity", desc: "Normalized PostgreSQL models managed via Prisma ORM with foreign key cascades governing income, expenses, and recurring budgets." },
+      { title: "Zero-Lock-In Export Engine", desc: "Client-side compilation enabling instantaneous one-click CSV and JSON data export for complete user financial ownership." },
+    ],
+    faqs: [
+      {
+        question: "What security architecture is implemented in SAMIO?",
+        answer: "SAMIO features passwordless One-Time Password (OTP) verification sent via email, creating cryptographically signed session tokens and eliminating password reuse vulnerabilities.",
+      },
+      {
+        question: "How is financial data modeled and protected in SAMIO?",
+        answer: "SAMIO uses Prisma ORM to interface with PostgreSQL, enforcing strict foreign key constraints, cascaded deletions, and atomic transactions across accounts, expenses, and recurring budgets.",
+      },
+    ],
   },
   {
     path: "/projects/peshawar-civic-gis-atlas",
@@ -167,6 +252,23 @@ const ROUTES = [
     sourceCode: "https://github.com/SameerAli126/PCA",
     techStack: ["Laravel", "PHP", "Leaflet", "MariaDB"],
     impact: "Shipped an open civic data operations platform with genuine ingestion pipelines and geospatial facility mapping.",
+    problemStatement:
+      "Peshawar Civic GIS Atlas solves municipal information opacity by offering an open civic geospatial mapping platform that validates, catalogs, and visualizes urban infrastructure and public services across Peshawar.",
+    subsystems: [
+      { title: "Leaflet Geospatial Mapping Engine", desc: "Interactive vector tiles and marker clustering visualizing schools, clinics, and municipal utilities across Peshawar districts." },
+      { title: "Administrative Ingestion Pipeline", desc: "Dataset parsing tools verifying CSV and GeoJSON coordinate bounds, checking geocoding precision, and logging provenance." },
+      { title: "Multi-Tier Role-Based Publishing", desc: "Granular Laravel authorization dividing public map exploration, surveyor field submissions, and administrative publication approvals." },
+    ],
+    faqs: [
+      {
+        question: "What is the mission of the Peshawar Civic GIS Atlas?",
+        answer: "Peshawar Civic GIS Atlas provides open civic transparency by cataloging municipal infrastructure, public facilities, and health centers on interactive Leaflet maps across Peshawar.",
+      },
+      {
+        question: "How does the dataset ingestion pipeline ensure data integrity?",
+        answer: "The platform features an administrative ingestion pipeline that validates CSV and GeoJSON uploads, verifying bounding boxes, geocoding validity, and recording audit logs before publishing.",
+      },
+    ],
   },
 ];
 
@@ -388,10 +490,61 @@ function buildComprehensiveGraph(meta, canonicalUrl, imageUrl) {
 
   const graph = [website, person, experienceRequirements, projectList, page];
 
+  if (meta.path === "/") {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${SITE.url}/#faq`,
+      name: "Frequently Asked Questions About Muhammad Sameer Ali",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Who is Muhammad Sameer Ali?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Muhammad Sameer Ali is a frontend-focused full-stack developer with 3+ years of commercial experience building responsive web products with React, Next.js, and TypeScript, delivering enterprise features at Deepixel.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What enterprise features has Muhammad Sameer Ali developed at Deepixel?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "At Deepixel, Sameer engineered core features for Invictus (an AI deal intelligence platform), including Server-Sent Events (SSE) streaming reports, responsive mobile PWA shell, Tiptap document table editing, Windows 125%/150% display scaling, and 21 automated Playwright test suites.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is Muhammad Sameer Ali's core technology stack?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Sameer specializes in React.js, Next.js, TypeScript, Tailwind CSS, Python (FastAPI), Node.js, Express, PHP (Laravel), PostgreSQL, MongoDB Atlas, Prisma ORM, Server-Sent Events (SSE), Docker, Playwright, and Vitest.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What software projects has Muhammad Sameer Ali engineered?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "His featured production projects include Invictus (enterprise AI deal platform), WordWanderer (gamified language learning with SRS), OptiTrade 3.0 (high-frequency stock trading dashboard), InvoiceGen Pro (AI invoicing with Stripe), PhotoStream / SnapCloud (FastAPI media platform), SAMIO (personal finance dashboard), and Peshawar Civic GIS Atlas (Laravel GIS).",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How can you contact or hire Muhammad Sameer Ali?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can reach Muhammad Sameer Ali via email at khsameer626@gmail.com, phone at +92 335 8181400, on GitHub at github.com/SameerAli126, LinkedIn at linkedin.com/in/sameerali126, or download his CV at msameerali.dev/muhammad-sameer-ali-cv.pdf.",
+          },
+        },
+      ],
+    });
+  }
+
   if (meta.path.startsWith("/projects/")) {
     const projectId = `${canonicalUrl}#softwareapplication`;
     const techArticleId = `${canonicalUrl}#techarticle`;
     const breadcrumbsId = `${canonicalUrl}#breadcrumbs`;
+    const faqId = `${canonicalUrl}#faq`;
 
     page.mainEntity = { "@id": projectId };
 
@@ -436,6 +589,41 @@ function buildComprehensiveGraph(meta, canonicalUrl, imageUrl) {
         { "@type": "ListItem", position: 3, name: pageName, item: canonicalUrl },
       ],
     });
+
+    const projectFaqs = meta.faqs && meta.faqs.length > 0
+      ? meta.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: f.answer,
+          },
+        }))
+      : [
+          {
+            "@type": "Question",
+            name: `What architectural challenges does ${pageName} solve?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `${pageName} is engineered to deliver high-performance, resilient user workflows, addressing state synchronization, responsive scaling, and low-latency interaction.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Who engineered ${pageName}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `${pageName} was architected and developed by Muhammad Sameer Ali, a frontend-focused full-stack developer with 3+ years of commercial software engineering experience.`,
+            },
+          },
+        ];
+
+    graph.push({
+      "@type": "FAQPage",
+      "@id": faqId,
+      name: `Frequently Asked Technical Questions About ${pageName}`,
+      mainEntity: projectFaqs,
+    });
   }
 
   return {
@@ -456,6 +644,7 @@ function renderPreRenderedBody(route) {
           <a href="#creative-lab" style="color:#94a3b8;text-decoration:none;">Creative Lab</a>
           <a href="#skills" style="color:#94a3b8;text-decoration:none;">Skills</a>
           <a href="#about" style="color:#94a3b8;text-decoration:none;">About</a>
+          <a href="#faq" style="color:#94a3b8;text-decoration:none;">FAQ</a>
           <a href="#contact" style="color:#94a3b8;text-decoration:none;">Contact</a>
           <a href="/muhammad-sameer-ali-cv.pdf" target="_blank" rel="noreferrer" style="color:#38bdf8;text-decoration:none;font-weight:600;">Download CV</a>
         </div>
@@ -551,6 +740,44 @@ function renderPreRenderedBody(route) {
         </p>
       </section>
 
+      <section id="faq" aria-labelledby="faq-heading" style="padding:3rem 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <h2 id="faq-heading" style="font-size:2rem;font-weight:700;color:#ffffff;margin-bottom:1.5rem;">
+          Frequently Asked Questions &amp; Architectural Answers
+        </h2>
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <article style="border:1px solid rgba(255,255,255,0.1);padding:1.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.02);">
+            <h3 style="font-size:1.25rem;color:#38bdf8;margin-bottom:0.5rem;">Who is Muhammad Sameer Ali?</h3>
+            <p style="color:#cbd5e1;line-height:1.7;">
+              Muhammad Sameer Ali is a frontend-focused full-stack developer with over 3 years of commercial experience building high-performance web products with React, Next.js, and TypeScript, delivering enterprise features at Deepixel.
+            </p>
+          </article>
+          <article style="border:1px solid rgba(255,255,255,0.1);padding:1.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.02);">
+            <h3 style="font-size:1.25rem;color:#38bdf8;margin-bottom:0.5rem;">What enterprise features has Muhammad Sameer Ali developed at Deepixel?</h3>
+            <p style="color:#cbd5e1;line-height:1.7;">
+              At Deepixel, Sameer engineered core features for Invictus (an AI deal intelligence platform), including Server-Sent Events (SSE) streaming reports, responsive mobile PWA shell, Tiptap document table editing, Windows 125%/150% display scaling, and 21 automated Playwright test suites.
+            </p>
+          </article>
+          <article style="border:1px solid rgba(255,255,255,0.1);padding:1.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.02);">
+            <h3 style="font-size:1.25rem;color:#38bdf8;margin-bottom:0.5rem;">What is Muhammad Sameer Ali's core technology stack?</h3>
+            <p style="color:#cbd5e1;line-height:1.7;">
+              Sameer specializes in React.js, Next.js, TypeScript, Tailwind CSS, Python (FastAPI), Node.js, Express, PHP (Laravel), PostgreSQL, MongoDB Atlas, Prisma ORM, Server-Sent Events (SSE), Docker, Playwright, and Vitest.
+            </p>
+          </article>
+          <article style="border:1px solid rgba(255,255,255,0.1);padding:1.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.02);">
+            <h3 style="font-size:1.25rem;color:#38bdf8;margin-bottom:0.5rem;">What software projects has Muhammad Sameer Ali engineered?</h3>
+            <p style="color:#cbd5e1;line-height:1.7;">
+              His featured production projects include Invictus (enterprise AI deal platform), WordWanderer (gamified language learning with SRS), OptiTrade 3.0 (high-frequency stock trading dashboard), InvoiceGen Pro (AI invoicing with Stripe), PhotoStream / SnapCloud (FastAPI media platform), SAMIO (personal finance dashboard), and Peshawar Civic GIS Atlas (Laravel GIS).
+            </p>
+          </article>
+          <article style="border:1px solid rgba(255,255,255,0.1);padding:1.5rem;border-radius:0.75rem;background:rgba(255,255,255,0.02);">
+            <h3 style="font-size:1.25rem;color:#38bdf8;margin-bottom:0.5rem;">How can you contact or hire Muhammad Sameer Ali?</h3>
+            <p style="color:#cbd5e1;line-height:1.7;">
+              You can reach Muhammad Sameer Ali via email at khsameer626@gmail.com, phone at +92 335 8181400, on GitHub at github.com/SameerAli126, LinkedIn at linkedin.com/in/sameerali126, or download his CV at msameerali.dev/muhammad-sameer-ali-cv.pdf.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section id="contact" aria-labelledby="contact-heading" style="padding:3rem 0;">
         <h2 id="contact-heading" style="font-size:2rem;font-weight:700;color:#ffffff;margin-bottom:1rem;">Connect with Sameer</h2>
         <p style="color:#cbd5e1;line-height:1.8;">
@@ -604,10 +831,36 @@ function renderPreRenderedBody(route) {
           </table>
         </section>
 
+        ${route.problemStatement ? `
+        <section aria-labelledby="challenge-heading" style="margin:2rem 0;">
+          <h2 id="challenge-heading" style="font-size:1.5rem;color:#ffffff;margin-bottom:0.75rem;">What architectural challenges does ${escapeAttribute(route.projectName || route.title)} solve?</h2>
+          <p style="color:#cbd5e1;line-height:1.7;">${escapeAttribute(route.problemStatement)}</p>
+        </section>` : ""}
+
+        ${route.subsystems && route.subsystems.length > 0 ? `
+        <section aria-labelledby="architecture-heading" style="margin:2rem 0;">
+          <h2 id="architecture-heading" style="font-size:1.5rem;color:#ffffff;margin-bottom:1rem;">How is ${escapeAttribute(route.projectName || route.title)} engineered?</h2>
+          <ul style="color:#cbd5e1;line-height:1.8;padding-left:1.5rem;">
+            ${route.subsystems.map(s => `<li><strong>${escapeAttribute(s.title)}:</strong> ${escapeAttribute(s.desc)}</li>`).join("\n            ")}
+          </ul>
+        </section>` : ""}
+
         ${route.impact ? `
         <section aria-labelledby="impact-heading" style="margin:2rem 0;">
           <h2 id="impact-heading" style="font-size:1.5rem;color:#ffffff;margin-bottom:0.75rem;">Engineering Impact &amp; Delivery</h2>
           <p style="color:#cbd5e1;line-height:1.7;">${escapeAttribute(route.impact)}</p>
+        </section>` : ""}
+
+        ${route.faqs && route.faqs.length > 0 ? `
+        <section aria-labelledby="faq-project-heading" style="margin:2rem 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08);">
+          <h2 id="faq-project-heading" style="font-size:1.5rem;color:#ffffff;margin-bottom:1rem;">Frequently Asked Technical Questions</h2>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            ${route.faqs.map(f => `
+            <article style="border:1px solid rgba(255,255,255,0.08);padding:1.25rem;border-radius:0.5rem;background:rgba(255,255,255,0.02);">
+              <h3 style="font-size:1.15rem;color:#38bdf8;margin-bottom:0.5rem;">${escapeAttribute(f.question)}</h3>
+              <p style="color:#cbd5e1;line-height:1.7;">${escapeAttribute(f.answer)}</p>
+            </article>`).join("\n")}
+          </div>
         </section>` : ""}
 
         <div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);">
@@ -737,6 +990,39 @@ async function writeRouteHtml(route, baseHtml) {
   await writeFile(directHtmlPath, content, "utf8");
 }
 
+async function generateSitemap(routes) {
+  const today = new Date().toISOString().split("T")[0];
+  const urlEntries = routes.map((route) => {
+    const loc = route.path === "/" ? `${SITE.url}/` : `${SITE.url}${route.path}`;
+    const priority =
+      route.path === "/"
+        ? "1.0"
+        : route.path.includes("wordwanderer") || route.path.includes("optitrade") || route.path.includes("invoicegen-pro")
+        ? "0.9"
+        : "0.8";
+    const changefreq = route.path === "/" ? "weekly" : "monthly";
+
+    return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${loc}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${loc}" />
+  </url>`;
+  });
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urlEntries.join("\n")}
+</urlset>
+`;
+
+  await writeFile(path.join(distDir, "sitemap.xml"), xml, "utf8");
+  const publicSitemapPath = path.join(rootDir, "public", "sitemap.xml");
+  await writeFile(publicSitemapPath, xml, "utf8");
+}
+
 async function syncPublicAssets() {
   const publicDir = path.join(rootDir, "public");
   if (!fs.existsSync(publicDir) || !fs.existsSync(distDir)) {
@@ -774,7 +1060,9 @@ async function main() {
   }
 
   await writeFile(path.join(distDir, "404.html"), applySeo(baseHtml, NOT_FOUND), "utf8");
+  await generateSitemap(ROUTES);
   await syncPublicAssets();
 }
 
 await main();
+

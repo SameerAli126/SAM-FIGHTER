@@ -72,6 +72,25 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# AI Agent Knowledge & Discovery Specifications:
+# https://msameerali.dev/llms.txt
+# https://msameerali.dev/llms-full.txt
+
 # Default policy for all crawlers
 User-agent: *
 Allow: /

@@ -205,10 +205,61 @@ function buildStructuredData({
 
   const graph: Record<string, unknown>[] = [website, person, experienceRequirements, projectList, page];
 
+  if (path === "/") {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${SITE.url}/#faq`,
+      name: "Frequently Asked Questions About Muhammad Sameer Ali",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Who is Muhammad Sameer Ali?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Muhammad Sameer Ali is a frontend-focused full-stack developer with 3+ years of commercial experience building responsive web products with React, Next.js, and TypeScript, delivering enterprise features at Deepixel.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What enterprise features has Muhammad Sameer Ali developed at Deepixel?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "At Deepixel, Sameer engineered core features for Invictus (an AI deal intelligence platform), including Server-Sent Events (SSE) streaming reports, responsive mobile PWA shell, Tiptap document table editing, Windows 125%/150% display scaling, and 21 automated Playwright test suites.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is Muhammad Sameer Ali's core technology stack?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Sameer specializes in React.js, Next.js, TypeScript, Tailwind CSS, Python (FastAPI), Node.js, Express, PHP (Laravel), PostgreSQL, MongoDB Atlas, Prisma ORM, Server-Sent Events (SSE), Docker, Playwright, and Vitest.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What software projects has Muhammad Sameer Ali engineered?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "His featured production projects include Invictus (enterprise AI deal platform), WordWanderer (gamified language learning with SRS), OptiTrade 3.0 (high-frequency stock trading dashboard), InvoiceGen Pro (AI invoicing with Stripe), PhotoStream / SnapCloud (FastAPI media platform), SAMIO (personal finance dashboard), and Peshawar Civic GIS Atlas (Laravel GIS).",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How can you contact or hire Muhammad Sameer Ali?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can reach Muhammad Sameer Ali via email at khsameer626@gmail.com, phone at +92 335 8181400, on GitHub at github.com/SameerAli126, LinkedIn at linkedin.com/in/sameerali126, or download his CV at msameerali.dev/muhammad-sameer-ali-cv.pdf.",
+          },
+        },
+      ],
+    });
+  }
+
   if (path.startsWith("/projects/")) {
     const projectId = `${canonicalUrl}#softwareapplication`;
     const techArticleId = `${canonicalUrl}#techarticle`;
     const breadcrumbsId = `${canonicalUrl}#breadcrumbs`;
+    const faqId = `${canonicalUrl}#faq`;
 
     page.mainEntity = { "@id": projectId };
 
@@ -250,6 +301,30 @@ function buildStructuredData({
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
         { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE.url}/#projects` },
         { "@type": "ListItem", position: 3, name: pageName, item: canonicalUrl },
+      ],
+    });
+
+    graph.push({
+      "@type": "FAQPage",
+      "@id": faqId,
+      name: `Frequently Asked Technical Questions About ${pageName}`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: `What architectural challenges does ${pageName} solve?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${pageName} is engineered to deliver high-performance, resilient user workflows, addressing state synchronization, responsive scaling, and low-latency interaction.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `Who engineered ${pageName}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${pageName} was architected and developed by Muhammad Sameer Ali, a frontend-focused full-stack developer with 3+ years of commercial software engineering experience.`,
+          },
+        },
       ],
     });
   }

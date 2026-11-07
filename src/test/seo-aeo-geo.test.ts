@@ -77,7 +77,11 @@ describe("SEO, AEO, and GEO Implementation & Standards Validation", () => {
     expect(robots).toContain("User-agent: ClaudeBot");
     expect(robots).toContain("User-agent: PerplexityBot");
     expect(robots).toContain("User-agent: Applebot-Extended");
+    expect(robots).toContain("User-agent: CCBot");
+    expect(robots).toContain("User-agent: Diffbot");
+    expect(robots).toContain("User-agent: Meta-ExternalAgent");
     expect(robots).toContain("Sitemap: https://msameerali.dev/sitemap.xml");
+    expect(robots).toContain("https://msameerali.dev/llms.txt");
   });
 
   it("verifies public/sitemap.xml includes valid XML structure, namespaces, lastmod, changefreq, and priorities", () => {
@@ -92,6 +96,9 @@ describe("SEO, AEO, and GEO Implementation & Standards Validation", () => {
     expect(sitemap).toContain("<lastmod>");
     expect(sitemap).toContain("<changefreq>");
 
+    const today = new Date().toISOString().split("T")[0];
+    expect(sitemap).toContain(`<lastmod>${today}</lastmod>`);
+
     const expectedProjects = [
       "optitrade",
       "wordwanderer",
@@ -104,6 +111,22 @@ describe("SEO, AEO, and GEO Implementation & Standards Validation", () => {
     for (const proj of expectedProjects) {
       expect(sitemap).toContain(`<loc>https://msameerali.dev/projects/${proj}</loc>`);
     }
+  });
+
+  it("verifies vercel.json includes explicit CORS, caching, and plain text headers for llms.txt and llms-full.txt", () => {
+    const vercelConfigPath = path.join(rootDir, "vercel.json");
+    expect(fs.existsSync(vercelConfigPath)).toBe(true);
+    const vercelJson = JSON.parse(fs.readFileSync(vercelConfigPath, "utf8"));
+
+    const llmsRule = vercelJson.headers.find((r: { source: string }) => r.source === "/llms.txt");
+    const llmsFullRule = vercelJson.headers.find((r: { source: string }) => r.source === "/llms-full.txt");
+
+    expect(llmsRule).toBeDefined();
+    expect(llmsFullRule).toBeDefined();
+
+    const llmsHeaders = Object.fromEntries(llmsRule.headers.map((h: { key: string; value: string }) => [h.key, h.value]));
+    expect(llmsHeaders["Content-Type"]).toBe("text/plain; charset=utf-8");
+    expect(llmsHeaders["Access-Control-Allow-Origin"]).toBe("*");
   });
 
   it("verifies pre-rendered dist/ HTML files contain complete Schema.org JSON-LD graphs and pre-rendered body content", () => {
@@ -133,6 +156,7 @@ describe("SEO, AEO, and GEO Implementation & Standards Validation", () => {
     expect(types).toContain("ProfilePage");
     expect(types).toContain("OccupationalExperienceRequirements");
     expect(types).toContain("ItemList");
+    expect(types).toContain("FAQPage");
 
     // Person schema verification
     const person = schema["@graph"].find((n: { "@type": string }) => n["@type"] === "Person");
@@ -148,8 +172,10 @@ describe("SEO, AEO, and GEO Implementation & Standards Validation", () => {
     expect(indexHtml).toContain("Muhammad Sameer Ali — Frontend / Full-Stack Developer");
     expect(indexHtml).toContain("Deepixel");
     expect(indexHtml).toContain("Invictus");
+    expect(indexHtml).toContain("Frequently Asked Questions &amp; Architectural Answers");
+    expect(indexHtml).toContain("Who is Muhammad Sameer Ali?");
 
-    // Verify static project pages have SoftwareApplication, TechArticle, and BreadcrumbList schemas
+    // Verify static project pages have SoftwareApplication, TechArticle, BreadcrumbList, and FAQPage schemas
     const projectSlugs = [
       "wordwanderer",
       "optitrade",
@@ -172,11 +198,41 @@ describe("SEO, AEO, and GEO Implementation & Standards Validation", () => {
       expect(projTypes).toContain("SoftwareApplication");
       expect(projTypes).toContain("TechArticle");
       expect(projTypes).toContain("BreadcrumbList");
+      expect(projTypes).toContain("FAQPage");
 
       // Verify pre-rendered body content on project route
       expect(projHtml).toContain('role="article"');
       expect(projHtml).toContain("Technical Case Study");
       expect(projHtml).toContain("Project Specifications");
+      expect(projHtml).toContain("What architectural challenges does");
+      expect(projHtml).toContain("Frequently Asked Technical Questions");
+
+      // Verify information density (pre-rendered text exceeds 200 words)
+      const bodyText = projHtml.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+      expect(bodyText.split(" ").length).toBeGreaterThan(200);
     }
+  });
+
+  it("runs the python heuristic audit tool and verifies index.html passes with zero hedge words and full landmarks", () => {
+    const auditPyPath = path.join(skillsDir, "geo-seo-aeo", "scripts", "audit.py");
+    expect(fs.existsSync(auditPyPath)).toBe(true);
+
+    const indexPath = path.join(distDir, "index.html");
+    const rawOutput = execSync(`python "${auditPyPath}" --file "${indexPath}" --base-url https://msameerali.dev`, {
+      encoding: "utf8",
+    });
+
+    const report = JSON.parse(rawOutput);
+    expect(report.seo.h1_count).toBe(1);
+    expect(report.seo.landmarks_detected.header).toBe(true);
+    expect(report.seo.landmarks_detected.main).toBe(true);
+    expect(report.seo.landmarks_detected.nav).toBe(true);
+    expect(report.seo.landmarks_detected.footer).toBe(true);
+    expect(report.geo.hedge_word_occurrences).toBe(0);
+    expect(report.geo.has_person_schema).toBe(true);
+    expect(report.geo.has_profile_page_schema).toBe(true);
+    expect(report.geo.has_website_schema).toBe(true);
+    expect(report.aeo.has_faq_or_howto).toBe(true);
+    expect(report.aeo.question_headings.length).toBeGreaterThanOrEqual(3);
   });
 });
