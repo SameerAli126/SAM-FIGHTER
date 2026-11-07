@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { PROFILE, SITE } from "@/config/site";
+import { EDUCATION, EXPERIENCES, PROFILE, PROJECTS, SITE, SKILLS } from "@/config/site";
 
 type SeoMetaProps = {
   title?: string;
@@ -16,7 +16,7 @@ function toAbsoluteUrl(value: string) {
   return new URL(value, `${SITE.url}/`).toString();
 }
 
-function setMetaTag(attribute: "name" | "property" | "itemprop", key: string, content: string) {
+function setMetaTag(attribute: "name" | "property" | "itemprop" | "http-equiv", key: string, content: string) {
   let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
 
   if (!element) {
@@ -40,12 +40,21 @@ function setCanonical(href: string) {
   element.setAttribute("href", href);
 }
 
-function setLink(rel: string, href: string) {
-  let element = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+function setLink(rel: string, href: string, extraAttrs?: Record<string, string>) {
+  let selector = `link[rel="${rel}"]`;
+  if (extraAttrs?.hreflang) {
+    selector += `[hreflang="${extraAttrs.hreflang}"]`;
+  }
+  let element = document.head.querySelector<HTMLLinkElement>(selector);
 
   if (!element) {
     element = document.createElement("link");
     element.setAttribute("rel", rel);
+    if (extraAttrs) {
+      for (const [k, v] of Object.entries(extraAttrs)) {
+        element.setAttribute(k, v);
+      }
+    }
     document.head.appendChild(element);
   }
 
@@ -80,8 +89,12 @@ function buildStructuredData({
 }) {
   const websiteId = `${SITE.url}/#website`;
   const personId = `${SITE.url}/#person`;
+  const experienceReqId = `${SITE.url}/#experience-requirements`;
+  const projectListId = `${SITE.url}/#project-list`;
   const webpageId = `${canonicalUrl}#webpage`;
   const pageName = title.replace(/\s+\|\s+Muhammad Sameer Ali$/, "");
+
+  const skillNames = SKILLS.map((s) => s.name);
 
   const website = {
     "@type": "WebSite",
@@ -89,19 +102,88 @@ function buildStructuredData({
     name: SITE.name,
     url: `${SITE.url}/`,
     inLanguage: "en-US",
+    description: SITE.defaultDescription,
+    publisher: { "@id": personId },
   };
 
   const person = {
     "@type": "Person",
     "@id": personId,
     name: PROFILE.fullName,
+    alternateName: ["Sameer Ali", "SameerAli126"],
     url: `${SITE.url}/`,
+    image: imageUrl,
     jobTitle: PROFILE.roleLine,
+    description: PROFILE.summary,
+    email: `mailto:${PROFILE.contactEmail}`,
+    telephone: PROFILE.phone,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Peshawar",
+      addressCountry: "PK",
+    },
+    worksFor: {
+      "@type": "Organization",
+      "@id": "https://deepixel.ai/#organization",
+      name: EXPERIENCES[0]?.company || "Deepixel",
+      url: "https://deepixel.ai",
+    },
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: EDUCATION.institution,
+      url: "https://cusit.edu.pk",
+    },
+    hasOccupation: {
+      "@type": "Occupation",
+      name: PROFILE.roleLine,
+      occupationLocation: {
+        "@type": "AdministrativeArea",
+        name: "Remote / Hybrid / Pakistan",
+      },
+      skills: skillNames.join(", "),
+      experienceRequirements: {
+        "@id": experienceReqId,
+      },
+    },
+    knowsAbout: [
+      ...skillNames,
+      "Full-Stack Web Development",
+      "Server-Sent Events (SSE)",
+      "Playwright Automated Testing",
+      "Generative Engine Optimization (GEO)",
+      "Answer Engine Optimization (AEO)",
+    ],
     sameAs: [PROFILE.githubUrl, PROFILE.linkedinUrl, PROFILE.xUrl],
   };
 
+  const experienceRequirements = {
+    "@type": "OccupationalExperienceRequirements",
+    "@id": experienceReqId,
+    name: "Frontend / Full-Stack Software Engineering Experience",
+    description:
+      "3+ years commercial software engineering experience spanning enterprise SaaS at Deepixel, reactive frontend architecture in React/Next.js/TypeScript, streaming SSE workflows, and full-stack backend services in Python, Node.js, and Laravel.",
+    monthsOfExperience: 36,
+  };
+
+  const projectList = {
+    "@type": "ItemList",
+    "@id": projectListId,
+    name: "Featured Software Engineering Projects by Muhammad Sameer Ali",
+    description:
+      "Curated catalog of production software applications, SaaS platforms, and open-source systems developed by Muhammad Sameer Ali.",
+    numberOfItems: PROJECTS.length,
+    itemListElement: PROJECTS.map((proj, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: proj.title,
+      item: proj.links[0]?.href.startsWith("http")
+        ? proj.links[0].href
+        : `${SITE.url}/${proj.links.find((l) => l.kind === "route")?.href.replace(/^\//, "") || ""}`,
+    })),
+  };
+
   const page: Record<string, unknown> = {
-    "@type": path === "/" ? "CollectionPage" : "WebPage",
+    "@type": path === "/" ? "ProfilePage" : "WebPage",
     "@id": webpageId,
     url: canonicalUrl,
     name: title,
@@ -117,25 +199,53 @@ function buildStructuredData({
     },
   };
 
-  const graph: Record<string, unknown>[] = [website, person, page];
+  if (path === "/") {
+    page.mainEntity = { "@id": personId };
+  }
+
+  const graph: Record<string, unknown>[] = [website, person, experienceRequirements, projectList, page];
 
   if (path.startsWith("/projects/")) {
-    const projectId = `${canonicalUrl}#project`;
+    const projectId = `${canonicalUrl}#softwareapplication`;
+    const techArticleId = `${canonicalUrl}#techarticle`;
+    const breadcrumbsId = `${canonicalUrl}#breadcrumbs`;
+
     page.mainEntity = { "@id": projectId };
 
     graph.push({
-      "@type": "CreativeWork",
+      "@type": "SoftwareApplication",
       "@id": projectId,
       name: pageName,
       description,
+      applicationCategory: "SoftwareApplication",
+      operatingSystem: "Web Browser",
+      url: canonicalUrl,
       author: { "@id": personId },
       creator: { "@id": personId },
-      url: canonicalUrl,
-      genre: "Software project",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    });
+
+    graph.push({
+      "@type": "TechArticle",
+      "@id": techArticleId,
+      headline: `${pageName}: Technical Architecture & Case Study`,
+      name: `${pageName} Technical Case Study`,
+      description,
+      author: { "@id": personId },
+      publisher: { "@id": personId },
+      mainEntityOfPage: { "@id": webpageId },
+      about: { "@id": projectId },
+      inLanguage: "en-US",
+      proficiencyLevel: "Expert",
     });
 
     graph.push({
       "@type": "BreadcrumbList",
+      "@id": breadcrumbsId,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
         { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE.url}/#projects` },
@@ -169,6 +279,8 @@ const SeoMeta = ({
     document.documentElement.setAttribute("prefix", "og: http://ogp.me/ns#");
     setCanonical(canonicalUrl);
     setLink("image_src", imageUrl);
+    setLink("alternate", canonicalUrl, { hreflang: "en" });
+    setLink("alternate", canonicalUrl, { hreflang: "x-default" });
 
     setMetaTag("name", "title", title);
     setMetaTag("name", "description", description);
@@ -178,6 +290,8 @@ const SeoMeta = ({
     setMetaTag("name", "theme-color", "#030712");
     setMetaTag("name", "keywords", resolvedKeywords);
     setMetaTag("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
+    setMetaTag("name", "language", "English");
+    setMetaTag("http-equiv", "content-language", "en-US");
 
     setMetaTag("property", "og:site_name", SITE.name);
     setMetaTag("property", "og:title", title);

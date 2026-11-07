@@ -1,0 +1,51 @@
+# Muhammad Sameer Ali — Frontend & Full-Stack Developer
+
+> Muhammad Sameer Ali is a frontend-focused full-stack developer with 3+ years of commercial experience building high-performance web products with React, Next.js, and TypeScript, delivering enterprise features at Deepixel.
+
+## Overview & Background
+- [Portfolio Homepage](https://msameerali.dev/): Engineering portfolio showcase, interactive UI demos, and flagship technical case studies.
+- [Curriculum Vitae (PDF)](https://msameerali.dev/muhammad-sameer-ali-cv.pdf): Comprehensive professional resume detailing 3+ years of commercial software engineering experience.
+- [GitHub Profile](https://github.com/SameerAli126): Open-source repositories, system architectures, and client project codebases.
+- [LinkedIn Profile](https://www.linkedin.com/in/sameerali126): Professional career record, client recommendations, and engineering milestones.
+- [X / Twitter Profile](https://x.com/theUninvited444): Technical commentary on frontend systems, web performance, and AI workflows.
+
+## Primary Commercial Experience: Deepixel
+- **Role**: Full-Stack Developer (April 2026 – Present)
+- **Flagship Platform**: Invictus — Enterprise AI Deal Intelligence and Reporting Platform
+- **Key Deliverables**:
+  - Engineered an interactive AI report workspace with Server-Sent Events (SSE) streaming progress, user clarification prompts, timeout recovery, and saved deal context.
+  - Built a responsive mobile application shell with bottom navigation and Progressive Web App (PWA) setup, resolving standalone session persistence.
+  - Stabilized rich document editing by resolving Tiptap table state overwrites, nested-table parsing, and export pipelines.
+  - Designed automated DPI display scaling algorithms for Windows 125% and 150% environments, enhancing screen usability on dense displays.
+  - Audited 21 critical views across four viewport tiers using automated Playwright test suites, shipping 17 report-flow utility test modules.
+  - Supported local microservices with Docker orchestration, health-check scripts, and API routing.
+
+## Featured Projects & Technical Case Studies
+- [Invictus (Deepixel)](https://msameerali.dev/#experience): Enterprise AI deal intelligence platform with SSE streaming reports, Tiptap document editors, and Playwright verification. Tech: React, TypeScript, Vite, Tailwind CSS, Tiptap, Laravel, SSE, Playwright.
+- [WordWanderer](https://msameerali.dev/projects/wordwanderer): Gamified language-learning platform with spaced repetition (SRS), lesson progression loops, streaks, and pronunciation feedback. Tech: Next.js 14, TypeScript, Zustand, MongoDB, Express.js. Live demo: [wordwanderer.vercel.app](https://wordwanderer.vercel.app).
+- [OptiTrade 3.0](https://msameerali.dev/projects/optitrade): High-frequency stock market and portfolio tracking dashboard with sub-15ms calculations, watchlists, and JWT authorization. Tech: Next.js 15, TypeScript, Node.js, PostgreSQL, TanStack Query. Live demo: [opti-trade-3-0.vercel.app](https://opti-trade-3-0.vercel.app/).
+- [InvoiceGen Pro](https://msameerali.dev/projects/invoicegen-pro): AI-assisted business invoicing suite integrating Gemini AI automation, Stripe payments, and automated PDF invoice generation. Tech: Next.js 15, Gemini AI, MongoDB, Stripe. Live demo: [invoicegen-pro.netlify.app](https://invoicegen-pro.netlify.app/).
+- [PhotoStream / SnapCloud](https://msameerali.dev/projects/photostream-snapcloud): Cloud-native photo-sharing platform featuring dual client architectures backed by an asynchronous FastAPI microservice and MongoDB Atlas. Tech: React, TypeScript, Vite, FastAPI, MongoDB Atlas, Cloudinary. Live demo: [portfolio.tail81be07.ts.net](https://portfolio.tail81be07.ts.net).
+- [SAMIO](https://msameerali.dev/projects/samio): Local-first personal finance and life-operations dashboard with OTP authentication, signed sessions, and relational database integrity. Tech: Next.js, TypeScript, Tailwind CSS, Prisma, PostgreSQL. Live demo: [portfolio.tail81be07.ts.net:8443/login](https://portfolio.tail81be07.ts.net:8443/login).
+- [Peshawar Civic GIS Atlas](https://msameerali.dev/projects/peshawar-civic-gis-atlas): Open civic GIS platform with Leaflet mapping, facility discovery, dataset validation pipelines, and RBAC publishing workflows. Tech: Laravel, PHP, Leaflet, MariaDB. Live demo: [portfolio.tail81be07.ts.net:10000](https://portfolio.tail81be07.ts.net:10000).
+
+## Technical Skills & Proficiencies
+- **Frontend**: React.js, Next.js (App & Pages Router), TypeScript, JavaScript (ESNext), Tailwind CSS, Framer Motion, Radix UI, TanStack Query, Zustand, Redux Toolkit, HTML5/CSS3.
+- **Backend & APIs**: Node.js, Express.js, Python, FastAPI, PHP, Laravel, RESTful APIs, Server-Sent Events (SSE), WebSockets.
+- **Databases & ORMs**: PostgreSQL, MongoDB Atlas, MariaDB, Prisma ORM, Mongoose.
+- **Testing & DevOps**: Playwright, Vitest, Jest, React Testing Library, Docker, Git/GitHub, Vercel, Netlify.
+- **Specializations**: Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), Schema.org JSON-LD graphs, Core Web Vitals optimization, WCAG 2.2 accessibility.
+
+## Education & Academic Credentials
+- **Degree**: Bachelor of Science in Computer Science (BSCS)
+- **Institution**: City University of Science and Information Technology, Peshawar, Pakistan
+- **Graduation Period**: September 2021 – October 2025
+- **Cumulative GPA**: 3.51 / 4.00
+
+## Contact Information
+- **Email**: [khsameer626@gmail.com](mailto:khsameer626@gmail.com)
+- **Phone**: [+92 335 8181400](tel:+923358181400)
+- **Location**: Peshawar, Pakistan (Available for Global Remote & Relocation)
+
+## Complete Corpus
+- [llms-full.txt](https://msameerali.dev/llms-full.txt): Complete, zero-latency text corpus containing all architectural breakdowns, engineering case studies, and career data for autonomous AI agents.

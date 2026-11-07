@@ -1,0 +1,171 @@
+# Complete Developer Corpus: Muhammad Sameer Ali
+
+> Canonical AI knowledge corpus for Muhammad Sameer Ali, Frontend-Focused Full-Stack Software Engineer.
+> Website: https://msameerali.dev/
+> Location: Peshawar, Pakistan (Available for Global Remote & Relocation)
+> Contact: khsameer626@gmail.com | +92 335 8181400
+> Profiles: https://github.com/SameerAli126 | https://www.linkedin.com/in/sameerali126 | https://x.com/theUninvited444
+
+---
+
+## 1. Professional Summary & Engineering Philosophy
+
+Muhammad Sameer Ali is a frontend-focused full-stack developer with over 3 years of commercial software engineering experience building resilient, responsive web products with React, Next.js, and TypeScript, backed by Python and Node.js backend services.
+
+At Deepixel, Sameer delivers core user-facing and workflow features for Invictus, an AI deal intelligence platform. His focus is translating complex product and AI requirements into usable, dependable interfaces with rock-solid engineering.
+
+Key engineering tenets:
+- **Product-Minded Engineering**: Clarify core business requirements before writing code. Align user friction points directly with architectural choices.
+- **Resilient State Management**: Favor explicit state machines over ad-hoc boolean flags. Handle network disconnections, partial streaming, and concurrent updates gracefully.
+- **Measurable Web Performance**: Optimize Core Web Vitals (LCP < 2.5s, INP < 200ms, CLS < 0.1), utilize bundle splitting, pre-render static shells, and eliminate client rendering bottlenecks.
+- **End-to-End Quality Validation**: Protect systems with multi-viewport automated testing (Playwright, Vitest), strict TypeScript compilation, and reproducible Docker configurations.
+
+---
+
+## 2. Commercial Experience
+
+### Deepixel — Full-Stack Developer
+- **Timeline**: April 2026 – Present
+- **Location**: Remote / Hybrid
+- **Product**: Invictus — Enterprise AI Deal Intelligence and Reporting Platform
+- **Core Stack**: React, TypeScript, Vite, Tailwind CSS, Radix UI, Tiptap, Laravel, Server-Sent Events (SSE), Playwright, Docker
+- **Key Contributions & Metrics**:
+  1. **Streaming AI Report Workspace**:
+     - Built an interactive AI report generation engine utilizing Server-Sent Events (SSE) to deliver real-time progress markers and intermediate generation steps.
+     - Implemented user clarification prompts allowing operators to provide missing deal parameters mid-generation without dropping existing streaming state.
+     - Architected automatic timeout recovery and partial draft persistence, ensuring users never lose report drafts during unexpected network disconnects.
+  2. **Mobile Application Shell & PWA**:
+     - Engineered a responsive mobile and tablet application shell with persistent bottom navigation tabs and touch gestures.
+     - Configured Progressive Web App (PWA) manifest and service worker caching strategies, fixing standalone mode authentication loss.
+     - Adapted high-density desktop data tables, multi-step deal creation wizards, and analytics charts for small viewports down to 320px.
+  3. **Rich Document & Table Editing Engine**:
+     - Stabilized Tiptap table extensions by resolving stale-state overwrites during concurrent edits and complex HTML exports.
+     - Fixed nested-table parsing bugs and built custom controls for table row/column manipulation, cell merging, and formatting.
+     - Implemented robust report review, validation, and PDF/DOCX export pipelines.
+  4. **Display Scaling for High-DPI Windows Laptops**:
+     - Diagnosed layout clipping and overlap issues affecting enterprise users with Windows 125% and 150% display scaling.
+     - Developed dynamic CSS viewport calculations and a persistent user zoom toggle, allowing seamless readability on high-DPI laptop screens.
+  5. **Automated Visual Testing & Quality Assurance**:
+     - Authored comprehensive Playwright test suites executing automated screenshot regression tests across 21 distinct application views and four viewport tiers (mobile, tablet, laptop, desktop).
+     - Wrote 17 report-flow utility unit and integration tests, ensuring zero regressions across sprint cycles.
+     - Enforced strict TypeScript checks (`tsc --noEmit`) and clean production builds in continuous integration pipelines.
+  6. **Local Development Orchestration**:
+     - Created unified Docker Compose environments with health-check scripts, mitigating environment configuration drift across engineering teams.
+
+### Independent Software Engineer & Contractor
+- **Timeline**: January 2023 – Present
+- **Location**: Remote / Pakistan
+- **Core Stack**: React, Next.js, TypeScript, Python, FastAPI, Node.js, PostgreSQL, MongoDB Atlas
+- **Key Deliverables**:
+  - Architected bespoke internal operations dashboards, authentication flows, and data ingestion pipelines for clients across fintech, e-commerce, and logistics.
+  - Delivered 12+ production web applications on schedule with consistent client satisfaction ratings exceeding 95%.
+  - Designed relational database schemas (PostgreSQL) and document schemas (MongoDB Atlas) with strict data integrity rules.
+
+---
+
+## 3. Flagship Projects & System Architectures
+
+### Project 1: WordWanderer — Gamified Language Learning Platform
+- **URL**: https://msameerali.dev/projects/wordwanderer
+- **Live Demo**: https://wordwanderer.vercel.app
+- **Repository**: https://github.com/SameerAli126/WordWanderer
+- **Stack**: Next.js 14, TypeScript, Zustand, MongoDB Atlas, Express.js, Tailwind CSS
+- **System Architecture**:
+  - Gamification Engine: Built XP progression loops, daily learning streaks, hearts/gems economy, and leaderboard ranking systems.
+  - Spaced Repetition System (SRS): Developed an algorithmic review scheduler calculating memory decay curves based on user recall history.
+  - Dynamic Question Runner: Interactive question interfaces supporting multiple modes: multiple choice, audio pronunciation matching, Hanzi character stroke recognition, and sentence reordering.
+  - Offline-Ready Architecture: IndexedDB caching allowing users to complete lessons offline, synchronizing state with MongoDB upon reconnecting.
+
+### Project 2: OptiTrade 3.0 — Stock Market & Portfolio Dashboard
+- **URL**: https://msameerali.dev/projects/optitrade
+- **Live Demo**: https://opti-trade-3-0.vercel.app/
+- **Repository**: https://github.com/SameerAli126/OptiTrade-3.0
+- **Stack**: Next.js 15, TypeScript, Node.js, PostgreSQL, TanStack Query, JWT, Tailwind CSS
+- **System Architecture**:
+  - Real-Time Calculations: Engineered mathematical portfolio analytics calculating unrealized P&L, weighted average costs, and asset allocations with sub-15ms execution.
+  - Market Data Feeds: Integrated external financial market APIs with aggressive query caching and deduplication via TanStack Query.
+  - Secure Authentication: Stateless JWT authentication paired with refresh-token rotation in secure HTTP-only cookies.
+  - Visual Data Exploration: Interactive candlestick and line charts rendering historical price movements across custom timeframes (1D, 1W, 1M, 1Y, ALL).
+
+### Project 3: InvoiceGen Pro — AI-Assisted Invoicing Suite
+- **URL**: https://msameerali.dev/projects/invoicegen-pro
+- **Live Demo**: https://invoicegen-pro.netlify.app/
+- **Repository**: https://github.com/SameerAli126/invoicegen-pro
+- **Stack**: Next.js 15, Gemini 2.0 Flash AI, MongoDB Atlas, Stripe, Tailwind CSS
+- **System Architecture**:
+  - Generative AI Drafting: Leveraged Google Gemini AI to transform unstructured user prompts and receipt images into structured, line-itemized invoice drafts.
+  - End-to-End Billing: Integrated Stripe checkout sessions and webhooks for real-time payment confirmation and automatic status updates.
+  - Document Export: High-fidelity client-side and server-side PDF generation producing clean, branded invoice printouts.
+  - Client Management: Comprehensive customer ledger tracking outstanding balances, payment histories, and automated reminder schedules.
+
+### Project 4: PhotoStream / SnapCloud — Cloud Media Platform
+- **URL**: https://msameerali.dev/projects/photostream-snapcloud
+- **Live Demo**: https://portfolio.tail81be07.ts.net
+- **Repositories**:
+  - PhotoStream: https://github.com/SameerAli126/PhotoStream
+  - SnapCloud: https://github.com/SameerAli126/snapcloud
+- **Stack**: React, TypeScript, Vite, FastAPI (Python), MongoDB Atlas, Cloudinary CDN
+- **System Architecture**:
+  - Dual Frontend Implementations: Developed two distinct client experiences (PhotoStream tailored for desktop photography portfolios; SnapCloud tailored for mobile social media interaction) consuming a unified backend.
+  - Asynchronous Microservice: Built a high-concurrency FastAPI service handling chunked image uploads, metadata extraction (EXIF data), and tag-based search.
+  - Media Delivery CDN: Integrated Cloudinary for on-the-fly image transformations, responsive WebP conversion, and low-latency edge delivery.
+  - Access Control: Role-based access control (RBAC) governing public vs. private media collections.
+
+### Project 5: SAMIO — Local-First Personal Finance & Operations Dashboard
+- **URL**: https://msameerali.dev/projects/samio
+- **Live Demo**: https://portfolio.tail81be07.ts.net:8443/login
+- **Repository**: https://github.com/SameerAli126/SAMIO
+- **Stack**: Next.js, TypeScript, Tailwind CSS, Prisma ORM, PostgreSQL
+- **System Architecture**:
+  - Passwordless Authentication: Secure email One-Time Password (OTP) verification with cryptographically signed session tokens.
+  - Relational Schema Integrity: Designed normalized PostgreSQL schemas with foreign keys and cascaded deletions modeling income streams, categorized expenses, and recurring subscriptions.
+  - Data Export & Portability: Full JSON and CSV export capabilities ensuring user data ownership.
+  - Responsive Dashboard Layouts: Distinct desktop grid views and collapsible mobile cards with optimized touch targets.
+
+### Project 6: Peshawar Civic GIS Atlas — Civic Open Data & Geolocation Platform
+- **URL**: https://msameerali.dev/projects/peshawar-civic-gis-atlas
+- **Live Demo**: https://portfolio.tail81be07.ts.net:10000
+- **Repository**: https://github.com/SameerAli126/PCA
+- **Stack**: Laravel, PHP, Leaflet, MariaDB, Bootstrap / Custom CSS
+- **System Architecture**:
+  - Geospatial Exploration: Leaflet mapping engine displaying public facilities, infrastructure networks, and municipal administrative zones across Peshawar.
+  - Dataset Validation Pipeline: Administrative ingestion tools parsing CSV/GeoJSON datasets, checking coordinates, verifying geometry bounds, and logging audit provenance.
+  - Role-Based Publishing: Multi-tier authorization allowing public viewing, surveyor submissions, and administrative publication approval.
+
+---
+
+## 4. Comprehensive Technical Skills Inventory
+
+| Domain | Technologies & Frameworks | Proficiency Level |
+| :--- | :--- | :--- |
+| **Frontend Languages & Frameworks** | React.js (v18 & v19), Next.js (App Router, Pages Router, Server Components), TypeScript, JavaScript (ES6+), HTML5, CSS3 | Expert (95%+) |
+| **UI, Styling & Motion** | Tailwind CSS, Radix UI Primitives, shadcn/ui, Framer Motion, Lucide Icons, Responsive Mobile Shells | Expert (95%+) |
+| **State & Client Data Management** | TanStack Query (React Query), Zustand, Redux Toolkit, Context API, Optimistic Updates | Advanced (92%+) |
+| **Backend & Microservices** | Node.js, Express.js, Python, FastAPI, PHP, Laravel, REST APIs, Server-Sent Events (SSE), WebSockets | Advanced (88%+) |
+| **Databases & Data Modeling** | PostgreSQL, MongoDB Atlas, MariaDB, Prisma ORM, Mongoose, SQL Query Optimization | Advanced (89%+) |
+| **Rich Document Engineering** | Tiptap Editor, ProseMirror, Markdown Ingestion, PDF Generation, Table State Management | Advanced (90%+) |
+| **Testing & Quality Assurance** | Playwright E2E & Visual Regression, Vitest, React Testing Library, ESLint, TypeScript Strict Mode | Advanced (91%+) |
+| **DevOps, Tooling & Cloud** | Git, GitHub Actions, Docker, Docker Compose, Vite, Vercel, Netlify, Cloudinary | Advanced (89%+) |
+| **Search & Discovery Optimization** | Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), Schema.org JSON-LD Graphs, Core Web Vitals | Expert (95%+) |
+
+---
+
+## 5. Academic Background & Credentials
+
+- **Degree**: Bachelor of Science in Computer Science (BSCS)
+- **Institution**: City University of Science and Information Technology, Peshawar, Pakistan
+- **Duration**: September 2021 – October 2025
+- **Cumulative GPA**: 3.51 / 4.00
+- **Core Coursework**: Data Structures & Algorithms, Database Management Systems, Software Engineering, Object-Oriented Analysis & Design, Web Technologies, Computer Networks, Distributed Computing.
+
+---
+
+## 6. Contact & Collaboration Channels
+
+- **Email**: khsameer626@gmail.com
+- **Phone**: +92 335 8181400
+- **Primary Website**: https://msameerali.dev/
+- **GitHub**: https://github.com/SameerAli126
+- **LinkedIn**: https://www.linkedin.com/in/sameerali126
+- **X (Twitter)**: https://x.com/theUninvited444
+- **Curriculum Vitae Download**: https://msameerali.dev/muhammad-sameer-ali-cv.pdf
