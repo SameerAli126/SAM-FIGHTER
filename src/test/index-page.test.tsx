@@ -12,7 +12,7 @@ describe("Index page", () => {
     );
 
     expect(screen.getByRole("heading", { name: /featured projects/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /combat skills/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /technical expertise/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /ready to build/i })).toBeInTheDocument();
   });
 });

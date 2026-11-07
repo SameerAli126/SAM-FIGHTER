@@ -15,9 +15,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Teko", "sans-serif"],
-        heading: ["Rajdhani", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+        display: ["'Plus Jakarta Sans'", "sans-serif"],
+        heading: ["'Plus Jakarta Sans'", "sans-serif"],
+        body: ["'Inter'", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,6 +58,11 @@ export default {
           red: "hsl(var(--energy-red))",
           orange: "hsl(var(--energy-orange))",
           gold: "hsl(var(--energy-gold))",
+        },
+        cyber: {
+          cyan: "hsl(var(--accent-cyan))",
+          azure: "hsl(var(--accent-azure))",
+          violet: "hsl(var(--accent-violet))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

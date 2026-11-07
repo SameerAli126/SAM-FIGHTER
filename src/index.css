@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +6,52 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 0 0% 95%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 18% 8%;
-    --card-foreground: 0 0% 95%;
+    --card: 224 45% 7%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 18% 8%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 224 45% 7%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 347 63% 54%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 224 30% 12%;
+    --secondary-foreground: 210 40% 92%;
 
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 224 25% 11%;
+    --muted-foreground: 217 19% 65%;
 
-    --accent: 38 90% 55%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 187 92% 48%;
+    --accent-foreground: 224 71% 4%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 347 63% 54%;
+    --border: 224 25% 15%;
+    --input: 224 25% 15%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --energy-red: 347 63% 54%;
-    --energy-orange: 15 80% 55%;
-    --energy-gold: 38 90% 55%;
-    --neon-glow: 347 80% 60%;
+    --energy-red: 217 91% 60%;
+    --energy-orange: 187 92% 48%;
+    --energy-gold: 265 89% 66%;
+    --accent-cyan: 187 92% 50%;
+    --accent-azure: 217 91% 60%;
+    --accent-violet: 265 89% 66%;
+    --neon-glow: 187 92% 50%;
 
-    --sidebar-background: 220 18% 6%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 347 63% 54%;
+    --sidebar-background: 224 45% 6%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 347 63% 54%;
+    --sidebar-accent: 224 30% 12%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 224 25% 15%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
@@ -57,81 +60,253 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground font-body;
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border) / 0.8) transparent;
   }
 
-  ::selection {
-    background: hsl(347 63% 54% / 0.3);
-    color: hsl(0 0% 100%);
+  body {
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary/20 selection:text-primary;
+    background-color: hsl(224 71% 4%);
+    color: hsl(210 40% 98%);
+  }
+
+  /* Universal sleek modern cyber scrollbars across all browsers and operating systems (eliminates chunky Windows gray scrollbars) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border) / 0.8) transparent;
+  }
+
+  *::-webkit-scrollbar,
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border) / 0.85);
+    border-radius: 9999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover,
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.7);
+  }
+
+  *::-webkit-scrollbar-corner,
+  ::-webkit-scrollbar-corner {
+    background: transparent;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Teko', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
   }
 
   .font-heading {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.01em;
   }
 
   .font-body {
     font-family: 'Inter', sans-serif;
   }
 
-  .text-glow {
-    text-shadow: 0 0 10px hsl(347 63% 54% / 0.5), 0 0 30px hsl(347 63% 54% / 0.3);
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
 
-  .text-glow-gold {
-    text-shadow: 0 0 10px hsl(38 90% 55% / 0.5), 0 0 30px hsl(38 90% 55% / 0.3);
+  .text-glow {
+    text-shadow: 0 0 20px hsl(217 91% 60% / 0.5), 0 0 40px hsl(187 92% 48% / 0.3);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 20px hsl(187 92% 48% / 0.6), 0 0 40px hsl(217 91% 60% / 0.3);
   }
 
   .box-glow {
-    box-shadow: 0 0 15px hsl(347 63% 54% / 0.3), 0 0 40px hsl(347 63% 54% / 0.1);
+    box-shadow: 0 0 25px hsl(217 91% 60% / 0.25), 0 0 50px hsl(187 92% 48% / 0.1);
   }
 
-  .box-glow-gold {
-    box-shadow: 0 0 15px hsl(38 90% 55% / 0.3), 0 0 40px hsl(38 90% 55% / 0.1);
+  .box-glow-cyan {
+    box-shadow: 0 0 25px hsl(187 92% 48% / 0.3), 0 0 60px hsl(217 91% 60% / 0.12);
   }
 
   .energy-gradient {
-    background: linear-gradient(135deg, hsl(347 63% 54%), hsl(15 80% 55%), hsl(38 90% 55%));
+    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(187 92% 48%), hsl(265 89% 66%));
   }
 
   .energy-gradient-text {
-    background: linear-gradient(135deg, hsl(347 63% 54%), hsl(15 80% 55%), hsl(38 90% 55%));
+    background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(187 92% 48%) 50%, hsl(265 89% 66%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glass-card {
-    background: hsl(220 18% 8% / 0.8);
-    backdrop-filter: blur(12px);
-    border: 1px solid hsl(220 15% 18% / 0.6);
+    background: hsla(224, 45%, 7%, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsla(224, 25%, 22%, 0.5);
+  }
+
+  .glass-panel {
+    background: hsla(224, 45%, 6%, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsla(224, 25%, 20%, 0.6);
   }
 
   .energy-bar {
-    background: linear-gradient(90deg, hsl(347 63% 54%), hsl(15 80% 55%), hsl(38 90% 55%));
-    box-shadow: 0 0 8px hsl(347 63% 54% / 0.5);
+    background: linear-gradient(90deg, hsl(217 91% 60%), hsl(187 92% 48%), hsl(265 89% 66%));
+    box-shadow: 0 0 12px hsl(187 92% 48% / 0.4);
   }
 
-  .fighting-border {
-    border: 1px solid hsl(347 63% 54% / 0.3);
+  .tech-gradient {
+    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(187 92% 48%), hsl(265 89% 66%));
+  }
+
+  .tech-gradient-text {
+    background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(187 92% 48%) 50%, hsl(265 89% 66%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .modern-card {
+    background: hsla(224, 45%, 7%, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsla(224, 25%, 22%, 0.5);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modern-border-glow {
     position: relative;
+    border: 1px solid hsla(187, 92%, 48%, 0.3);
   }
 
-  .fighting-border::before {
+  .modern-border-glow::before {
     content: '';
     position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-    background: linear-gradient(135deg, hsl(347 63% 54% / 0.2), transparent, hsl(38 90% 55% / 0.2));
+    inset: -1px;
+    background: linear-gradient(135deg, hsla(217, 91%, 60%, 0.25), transparent, hsla(187, 92%, 48%, 0.25));
     border-radius: inherit;
     z-index: -1;
+  }
+
+  /* Universal Scrollbar Elimination Utilities (Firefox, Chrome, Edge, Safari, iOS, Android) */
+  .scrollbar-none,
+  .no-scrollbar {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  .scrollbar-none::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    -webkit-appearance: none !important;
+    background: transparent !important;
+  }
+
+  /* Cybernetic / Sleek Scrollbar for intentional scroll containers */
+  .custom-scrollbar,
+  .cyber-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.45) hsla(224, 45%, 6%, 0.6);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar,
+  .cyber-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track,
+  .cyber-scrollbar::-webkit-scrollbar-track {
+    background: hsla(224, 45%, 6%, 0.5);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb,
+  .cyber-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.45);
+    border-radius: 9999px;
+    border: 1px solid hsla(187, 92%, 48%, 0.2);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+  .cyber-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+    box-shadow: 0 0 8px hsl(var(--primary) / 0.6);
+  }
+}
+
+/* Standalone fail-safe definitions ensuring no-scrollbar / scrollbar-none are never dropped */
+.scrollbar-none,
+.no-scrollbar,
+[data-no-scrollbar] {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar,
+[data-no-scrollbar]::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none !important;
+  background: transparent !important;
+}
+
+.custom-scrollbar,
+.cyber-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.45) hsla(224, 45%, 6%, 0.6);
+}
+
+.custom-scrollbar::-webkit-scrollbar,
+.cyber-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track,
+.cyber-scrollbar::-webkit-scrollbar-track {
+  background: hsla(224, 45%, 6%, 0.5);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb,
+.cyber-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.45);
+  border-radius: 9999px;
+  border: 1px solid hsla(187, 92%, 48%, 0.2);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+.cyber-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+  box-shadow: 0 0 8px hsl(var(--primary) / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

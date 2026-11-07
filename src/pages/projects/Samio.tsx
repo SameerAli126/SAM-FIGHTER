@@ -11,7 +11,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import FighterBackground from "@/components/FighterBackground";
+import ModernBackground from "@/components/ModernBackground";
 import Navbar from "@/components/Navbar";
 import SeoMeta from "@/components/SeoMeta";
 import { FUNNEL_LINKS } from "@/config/site";
@@ -19,33 +19,33 @@ import { FUNNEL_LINKS } from "@/config/site";
 const features = [
   {
     icon: KeyRound,
-    title: "Email + OTP Authentication",
-    desc: "Password-based sign in with email OTP verification and signed session cookies for protected access.",
+    title: "Email & OTP Authentication",
+    desc: "Strict credential verification with timed OTP challenges, salted password hashing, and encrypted session cookies.",
   },
   {
     icon: LayoutDashboard,
-    title: "Life Ops Dashboard",
-    desc: "An overview experience for transactions, income, budgets, tasks, subscriptions, goals, and operational insights.",
+    title: "Life Ops Control Center",
+    desc: "Unified view of accounts, cash flow, debt amortization, recurring expenses, and net worth trajectory.",
   },
   {
     icon: Receipt,
     title: "Admin CRUD Workflows",
-    desc: "Structured admin flows for updating accounts, categories, transactions, rules, debts, assets, and recurring records.",
+    desc: "Full administrative controls for transactions, categories, budgets, and automated ledger balancing.",
   },
   {
     icon: BarChart3,
-    title: "Reporting and Insights",
-    desc: "Cash, burn, runway, trend stories, commitments, and export-oriented reports designed for everyday decision-making.",
+    title: "Financial Analytics & Burn Rate",
+    desc: "Runway calculations, monthly trend analysis, and visual expense breakdown reports designed for actionable decisions.",
   },
   {
     icon: Wallet,
-    title: "Budget and Rules Engine",
-    desc: "Bucket budgeting and lightweight rules support for categorization, review flags, and spending visibility.",
+    title: "Bucket Budgeting Engine",
+    desc: "Zero-based budgeting with configurable allocation rules and proactive budget overrun warnings.",
   },
   {
     icon: FileJson,
-    title: "Portable Data Exports",
-    desc: "Reports and JSON exports keep the product local-first and friendly for backup or migration workflows.",
+    title: "Local-First Portability",
+    desc: "Complete JSON data export and backup pipelines ensuring user data ownership and zero vendor lock-in.",
   },
 ];
 
@@ -61,9 +61,9 @@ const tech = [
 ];
 
 const architecture = [
-  "Multi-tenant data isolation per user with Prisma-backed PostgreSQL models and minor-unit money storage.",
-  "Protected dashboard routes plus admin APIs for records, bootstrap setup, reports, and settings updates.",
-  "A local-first operating model that supports self-hosting, dev OTP flows, data exports, and iterative personal-finance workflows.",
+  "Strict multi-tenant tenant isolation with relational Prisma-backed PostgreSQL models and integer-based minor currency calculations.",
+  "Protected SSR routes with authenticated edge middleware and granular role-based administrative CRUD mutations.",
+  "Local-first operating model supporting self-hosting, developer OTP bypasses, and encrypted data portability.",
 ];
 
 const SamioPage = () => (
@@ -74,39 +74,40 @@ const SamioPage = () => (
       path="/projects/samio"
     />
     <Navbar />
-    <FighterBackground>
+    <ModernBackground>
       <section className="pt-32 pb-16 relative">
         <div className="container mx-auto px-6 max-w-5xl">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-heading text-sm uppercase tracking-wider mb-8"
+              to="/#projects"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-cyan-400 transition-colors font-mono text-xs uppercase tracking-wider mb-8"
             >
-              <ArrowLeft size={16} /> Back to Portfolio
+              <ArrowLeft size={14} /> Back to Projects & Systems
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="font-display text-xs uppercase tracking-[0.3em] text-primary mb-3">Project Showcase</p>
-            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase mb-6">
-              SA<span className="energy-gradient-text">MIO</span>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-secondary/40 px-3.5 py-1 text-xs font-mono text-cyan-400 mb-4">
+              Personal Finance & Life Ops • Shipped Product
+            </div>
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6">
+              SA<span className="tech-gradient-text text-glow">MIO</span>
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-8">
-              A local-first personal finance and life-ops dashboard designed to manage transactions,
-              income, debts, assets, subscriptions, goals, budgets, and operational reporting from a
-              single system.
+            <p className="font-body text-muted-foreground text-base sm:text-lg leading-relaxed max-w-3xl mb-8">
+              A private, local-first personal finance and life-ops management system.
+              Engineered with Next.js, Prisma ORM, and PostgreSQL with strict ACID financial transaction guarantees.
             </p>
-            <div className="flex gap-4 flex-wrap">
+            <div className="flex gap-3 flex-wrap">
               <a
                 href={FUNNEL_LINKS.samio}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm rounded hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-heading font-bold text-xs uppercase tracking-wider rounded-lg shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:opacity-95 transition-all"
               >
-                <ShieldCheck size={16} /> Live Funnel
+                <ShieldCheck size={15} /> Launch SAMIO
               </a>
-              <span className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded text-muted-foreground">
-                <Database size={16} /> Private Build
+              <span className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-border/80 font-heading font-semibold text-xs text-muted-foreground rounded-lg">
+                <Database size={15} /> Private Enterprise Build
               </span>
             </div>
           </motion.div>
@@ -119,23 +120,25 @@ const SamioPage = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+            className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
           >
-            Key <span className="energy-gradient-text">Features</span>
+            Key <span className="tech-gradient-text">Features & Capabilities</span>
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((feature, i) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="glass-card rounded-lg p-6 hover:border-primary/30 transition-all duration-300 group"
+                transition={{ delay: i * 0.06 }}
+                className="glass-card rounded-xl p-6 border border-border/70 hover:border-primary/40 hover:box-glow-cyan transition-all duration-300 group"
               >
-                <feature.icon className="text-primary mb-4 group-hover:scale-110 transition-transform" size={24} />
-                <h3 className="font-display font-bold uppercase mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.desc}</p>
+                <div className="p-2.5 rounded-lg bg-primary/10 text-primary w-fit mb-4 group-hover:scale-105 transition-transform">
+                  <feature.icon size={20} />
+                </div>
+                <h3 className="font-heading font-bold text-base text-foreground mb-2">{feature.title}</h3>
+                <p className="font-body text-muted-foreground text-xs leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -148,23 +151,23 @@ const SamioPage = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+            className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
           >
-            Architecture <span className="energy-gradient-text">Highlights</span>
+            Architecture <span className="tech-gradient-text">Highlights</span>
           </motion.h2>
-          <div className="glass-card rounded-lg overflow-hidden border border-primary/20">
+          <div className="glass-card rounded-2xl overflow-hidden border border-border/70 shadow-xl">
             {architecture.map((note, i) => (
               <motion.div
                 key={note}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -15 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className={`p-5 text-sm text-muted-foreground leading-relaxed ${
+                transition={{ delay: i * 0.05 }}
+                className={`p-5 font-body text-xs sm:text-sm text-muted-foreground leading-relaxed ${
                   i < architecture.length - 1 ? "border-b border-border/50" : ""
-                }`}
+                } hover:bg-secondary/40 transition-colors`}
               >
-                {note}
+                • {note}
               </motion.div>
             ))}
           </div>
@@ -177,22 +180,24 @@ const SamioPage = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+            className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
           >
-            Tech <span className="energy-gradient-text">Stack</span>
+            Technology <span className="tech-gradient-text">Stack</span>
           </motion.h2>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2.5">
             {tech.map((item, i) => (
               <motion.span
                 key={item.label}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="px-4 py-2 glass-card rounded text-sm font-heading font-semibold uppercase tracking-wider border border-primary/20 hover:border-primary/60 transition-colors cursor-default"
+                transition={{ delay: i * 0.04 }}
+                className="px-3.5 py-2 glass-card rounded-lg text-xs font-mono border border-border/70 hover:border-primary/50 transition-colors flex items-center gap-2"
               >
-                {item.label}
-                <span className="ml-2 text-xs text-primary opacity-70">{item.cat}</span>
+                <span className="text-foreground font-semibold">{item.label}</span>
+                <span className="text-[10px] text-cyan-400 bg-secondary/80 px-1.5 py-0.5 rounded border border-border/60">
+                  {item.cat}
+                </span>
               </motion.span>
             ))}
           </div>
@@ -201,25 +206,25 @@ const SamioPage = () => (
 
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-5xl text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-display text-4xl font-bold uppercase mb-6">
-              Need A Similar <span className="energy-gradient-text">Operations System?</span>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="glass-card rounded-3xl p-10 border border-border/80 shadow-2xl">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
+              Need A Scalable <span className="tech-gradient-text">Operations System?</span>
             </h2>
-            <p className="text-muted-foreground mb-8">
-              Open the current funnel-hosted SAMIO build, or contact me if you want a similar operations dashboard for your own workflow.
+            <p className="font-body text-muted-foreground text-sm max-w-xl mx-auto mb-8">
+              Open the funnel demo or get in touch for custom enterprise dashboard development.
             </p>
             <a
               href={FUNNEL_LINKS.samio}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display uppercase tracking-wider rounded hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-heading font-bold text-xs uppercase tracking-wider rounded-lg shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:opacity-95 transition-all"
             >
-              <ShieldCheck size={18} /> Launch SAMIO
+              <ShieldCheck size={16} /> Launch SAMIO
             </a>
           </motion.div>
         </div>
       </section>
-    </FighterBackground>
+    </ModernBackground>
   </div>
 );
 

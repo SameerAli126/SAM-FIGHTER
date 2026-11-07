@@ -35,7 +35,7 @@ class AppErrorBoundary extends Component<AppErrorBoundaryProps, AppErrorBoundary
           <button
             type="button"
             onClick={() => window.location.reload()}
-            className="energy-gradient rounded-sm px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-primary-foreground"
+            className="rounded-lg bg-primary px-6 py-3 font-heading text-xs font-bold text-primary-foreground shadow-lg hover:opacity-95 transition-all"
           >
             Reload
           </button>

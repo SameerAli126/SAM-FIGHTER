@@ -18,7 +18,8 @@ const SITE = {
   twitterHandle: "@theUninvited444",
   defaultKeywords: [
     "Muhammad Sameer Ali",
-    "full-stack software engineer",
+    "Frontend / Full-Stack Developer",
+    "Deepixel",
     "React developer",
     "Next.js developer",
     "TypeScript portfolio",
@@ -30,7 +31,7 @@ const SITE = {
   ],
   person: {
     name: "Muhammad Sameer Ali",
-    jobTitle: "Full-Stack Software Engineer",
+    jobTitle: "Frontend / Full-Stack Developer",
     github: "https://github.com/SameerAli126",
     linkedin: "https://www.linkedin.com/in/sameerali126",
     x: "https://x.com/theUninvited444",
@@ -40,9 +41,9 @@ const SITE = {
 const ROUTES = [
   {
     path: "/",
-    title: "Muhammad Sameer Ali | Full-Stack Software Engineer",
+    title: "Muhammad Sameer Ali | Frontend / Full-Stack Developer",
     description:
-      "Portfolio of Muhammad Sameer Ali, a full-stack software engineer building fast, scalable web products across React, Next.js, FastAPI, Laravel, MongoDB, and PostgreSQL.",
+      "Portfolio of Muhammad Sameer Ali, a frontend-focused full-stack developer building responsive web products with React, Next.js, and TypeScript, delivering enterprise features at Deepixel.",
     keywords: [...SITE.defaultKeywords],
     type: "website",
   },

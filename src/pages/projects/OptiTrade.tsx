@@ -12,7 +12,7 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import FighterBackground from "@/components/FighterBackground";
+import ModernBackground from "@/components/ModernBackground";
 import Navbar from "@/components/Navbar";
 import SeoMeta from "@/components/SeoMeta";
 
@@ -66,12 +66,12 @@ const tech = [
 ];
 
 const structure = [
-  { dir: "app/", desc: "Next.js 15 App Router" },
-  { dir: "components/", desc: "Reusable UI components" },
-  { dir: "contexts/", desc: "React contexts for state" },
-  { dir: "hooks/", desc: "Custom hooks incl. analytics" },
-  { dir: "services/", desc: "API services & data fetching" },
-  { dir: "docs/", desc: "Full documentation by category" },
+  { dir: "app/", desc: "Next.js 15 App Router with streaming SSR" },
+  { dir: "components/", desc: "Reusable atomic and financial UI components" },
+  { dir: "contexts/", desc: "React contexts for global state & session auth" },
+  { dir: "hooks/", desc: "Custom hooks incl. market analytics & websockets" },
+  { dir: "services/", desc: "API services, telemetry & live data fetching" },
+  { dir: "docs/", desc: "Full architectural documentation by category" },
 ];
 
 const OptiTradePage = () => (
@@ -82,45 +82,47 @@ const OptiTradePage = () => (
       path="/projects/optitrade"
     />
     <Navbar />
-    <FighterBackground>
+    <ModernBackground>
       <section className="pt-32 pb-16 relative">
         <div className="container mx-auto px-6 max-w-5xl">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-heading text-sm uppercase tracking-wider mb-8"
+              to="/#projects"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-cyan-400 transition-colors font-mono text-xs uppercase tracking-wider mb-8"
             >
-              <ArrowLeft size={16} /> Back to Portfolio
+              <ArrowLeft size={14} /> Back to Projects & Systems
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="font-display text-xs uppercase tracking-[0.3em] text-primary mb-3">Project Showcase</p>
-            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase mb-6">
-              Opti<span className="energy-gradient-text">Trade</span>
-              <span className="text-2xl md:text-4xl ml-3 text-muted-foreground">3.0</span>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-secondary/40 px-3.5 py-1 text-xs font-mono text-cyan-400 mb-4">
+              Fintech and Trading UX • Production Release
+            </div>
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6">
+              Opti<span className="tech-gradient-text text-glow">Trade</span>
+              <span className="text-2xl md:text-4xl ml-3 text-muted-foreground font-mono">3.0</span>
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mb-8">
-              A modern, data-driven stock trading application built with Next.js 15. Provides a
-              comprehensive suite of tools for tracking and analyzing the stock market, managing
-              portfolios, and making informed trading decisions.
+            <p className="font-body text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
+              A high-frequency stock trading application engineered with Next.js 15. Provides a
+              comprehensive suite of tools for tracking real-time market data, calculating portfolio Sharpe
+              ratios, and executing authenticated trades with sub-second responsiveness.
             </p>
-            <div className="flex gap-4 flex-wrap">
+            <div className="flex gap-3 flex-wrap">
               <a
                 href="https://opti-trade-3-0.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-display uppercase tracking-wider text-sm rounded hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-heading font-bold text-xs uppercase tracking-wider rounded-lg shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:opacity-95 transition-all"
               >
-                <ExternalLink size={16} /> Live Demo
+                <ExternalLink size={15} /> Launch Live Application
               </a>
               <a
                 href="https://github.com/SameerAli126/OptiTrade-3.0"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-primary/30 font-display uppercase tracking-wider text-sm rounded hover:border-primary transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 glass-card border border-border/80 font-heading font-semibold text-xs text-foreground rounded-lg hover:border-primary/50 transition-colors"
               >
-                <Github size={16} /> View Source
+                <Github size={15} /> View Source Code
               </a>
             </div>
           </motion.div>
@@ -133,23 +135,25 @@ const OptiTradePage = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+            className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
           >
-            Key <span className="energy-gradient-text">Features</span>
+            Core <span className="tech-gradient-text">Architecture & Features</span>
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((feature, i) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="glass-card rounded-lg p-6 hover:border-primary/30 transition-all duration-300 group"
+                transition={{ delay: i * 0.06 }}
+                className="glass-card rounded-xl p-6 border border-border/70 hover:border-primary/40 hover:box-glow-cyan transition-all duration-300 group"
               >
-                <feature.icon className="text-primary mb-4 group-hover:scale-110 transition-transform" size={24} />
-                <h3 className="font-display font-bold uppercase mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.desc}</p>
+                <div className="p-2.5 rounded-lg bg-primary/10 text-primary w-fit mb-4 group-hover:scale-105 transition-transform">
+                  <feature.icon size={20} />
+                </div>
+                <h3 className="font-heading font-bold text-base text-foreground mb-2">{feature.title}</h3>
+                <p className="font-body text-muted-foreground text-xs leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -162,22 +166,22 @@ const OptiTradePage = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+            className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
           >
-            Project <span className="energy-gradient-text">Structure</span>
+            Project <span className="tech-gradient-text">Structure</span>
           </motion.h2>
-          <div className="glass-card rounded-lg overflow-hidden border border-primary/20">
+          <div className="glass-card rounded-2xl overflow-hidden border border-border/70 shadow-xl">
             {structure.map((section, i) => (
               <motion.div
                 key={section.dir}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -15 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className={`flex items-center gap-6 p-4 ${i < structure.length - 1 ? "border-b border-border/50" : ""} hover:bg-primary/5 transition-colors`}
+                transition={{ delay: i * 0.05 }}
+                className={`flex items-center gap-6 p-4 ${i < structure.length - 1 ? "border-b border-border/50" : ""} hover:bg-secondary/40 transition-colors`}
               >
-                <code className="font-mono text-primary text-sm font-bold w-32 shrink-0">{section.dir}</code>
-                <span className="text-muted-foreground text-sm">{section.desc}</span>
+                <code className="font-mono text-cyan-400 text-xs font-bold w-32 shrink-0">{section.dir}</code>
+                <span className="font-body text-muted-foreground text-xs sm:text-sm">{section.desc}</span>
               </motion.div>
             ))}
           </div>
@@ -190,22 +194,24 @@ const OptiTradePage = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-bold uppercase mb-12"
+            className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-foreground mb-10"
           >
-            Tech <span className="energy-gradient-text">Stack</span>
+            Technology <span className="tech-gradient-text">Stack</span>
           </motion.h2>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2.5">
             {tech.map((item, i) => (
               <motion.span
                 key={item.label}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="px-4 py-2 glass-card rounded text-sm font-heading font-semibold uppercase tracking-wider border border-primary/20 hover:border-primary/60 transition-colors cursor-default"
+                transition={{ delay: i * 0.04 }}
+                className="px-3.5 py-2 glass-card rounded-lg text-xs font-mono border border-border/70 hover:border-primary/50 transition-colors flex items-center gap-2"
               >
-                {item.label}
-                <span className="ml-2 text-xs text-primary opacity-70">{item.cat}</span>
+                <span className="text-foreground font-semibold">{item.label}</span>
+                <span className="text-[10px] text-cyan-400 bg-secondary/80 px-1.5 py-0.5 rounded border border-border/60">
+                  {item.cat}
+                </span>
               </motion.span>
             ))}
           </div>
@@ -214,23 +220,25 @@ const OptiTradePage = () => (
 
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-5xl text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="font-display text-4xl font-bold uppercase mb-6">
-              Trade <span className="energy-gradient-text">Smarter</span>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="glass-card rounded-3xl p-10 border border-border/80 shadow-2xl">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4">
+              Trade <span className="tech-gradient-text">Smarter</span> with OptiTrade
             </h2>
-            <p className="text-muted-foreground mb-8">Explore the live stock trading platform.</p>
+            <p className="font-body text-muted-foreground text-sm max-w-xl mx-auto mb-8">
+              Experience the production application live on Vercel with streaming data tables and simulated execution.
+            </p>
             <a
               href="https://opti-trade-3-0.vercel.app/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display uppercase tracking-wider rounded hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-heading font-bold text-xs uppercase tracking-wider rounded-lg shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:opacity-95 transition-all"
             >
-              <ExternalLink size={18} /> Launch OptiTrade
+              <ExternalLink size={16} /> Launch OptiTrade 3.0
             </a>
           </motion.div>
         </div>
       </section>
-    </FighterBackground>
+    </ModernBackground>
   </div>
 );
 
