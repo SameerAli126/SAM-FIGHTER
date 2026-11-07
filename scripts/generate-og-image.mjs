@@ -60,7 +60,7 @@ const ogHtml = `<!DOCTYPE html>
       height: 630px;
       overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: #030712;
+      background-color: #080a10;
       color: #f8fafc;
       -webkit-font-smoothing: antialiased;
     }
@@ -68,141 +68,271 @@ const ogHtml = `<!DOCTYPE html>
       position: relative;
       width: 1200px;
       height: 630px;
-      background: #030712;
+      background-color: #080a10;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      padding: 56px 72px;
+      padding: 44px 56px;
       overflow: hidden;
+    }
+    /* Ambient cyan glow behind portrait */
+    .ambient-glow {
+      position: absolute;
+      right: 20px;
+      top: 40px;
+      width: 440px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #07223b 0%, #071728 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
     }
     /* Subtle geometric grid for clean, lightweight rendering */
     .grid-lines {
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(to right, #091326 1px, transparent 1px),
-        linear-gradient(to bottom, #091326 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.7;
+        linear-gradient(to right, #0d192e 1px, transparent 1px),
+        linear-gradient(to bottom, #0d192e 1px, transparent 1px);
+      background-size: 48px 48px;
       pointer-events: none;
+      z-index: 2;
     }
-    /* Top neon cyan-to-azure beam */
-    .top-beam {
+    /* Constellation vector overlay */
+    .constellation-layer {
       position: absolute;
-      top: 0;
-      left: 80px;
-      right: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #06b6d4 35%, #3b82f6 65%, transparent);
+      inset: 0;
+      width: 1200px;
+      height: 630px;
+      pointer-events: none;
+      z-index: 2;
     }
     /* Outer high-tech frame */
     .frame-border {
       position: absolute;
       inset: 16px;
-      border: 1px solid #111e38;
+      border: 1px solid rgba(56, 189, 248, 0.18);
       border-radius: 20px;
       pointer-events: none;
+      z-index: 3;
+    }
+    /* Top neon cyan-to-azure beam */
+    .top-beam {
+      position: absolute;
+      top: 16px;
+      left: 70px;
+      right: 70px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #06b6d4 30%, #38bdf8 70%, transparent);
+      box-shadow: 0 0 12px #06b6d4;
+      z-index: 3;
     }
 
     /* Left column */
     .left-col {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      max-width: 680px;
+      justify-content: space-between;
+      width: 690px;
+      height: 520px;
     }
-    .badge-row {
+
+    /* Header Row */
+    .header-row {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 22px;
     }
-    .pill-brand {
+    .brand-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       padding: 6px 14px;
-      background: #082845;
-      border: 1px solid #0284c7;
+      background: rgba(8, 25, 48, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 9999px;
-      font-size: 13px;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.18);
+    }
+    .brand-spark {
+      color: #22d3ee;
+      font-size: 11px;
+    }
+    .brand-domain {
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-family: ui-monospace, SFMono-Regular, "Segoe UI Mono", Menlo, Consolas, monospace;
+    }
+    .brand-tag {
+      color: #38bdf8;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #38bdf8;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      padding-left: 7px;
+      border-left: 1px solid rgba(56, 189, 248, 0.3);
+      font-family: ui-monospace, SFMono-Regular, "Segoe UI Mono", Menlo, Consolas, monospace;
     }
     .pill-status {
       display: inline-flex;
       align-items: center;
       gap: 7px;
       padding: 6px 14px;
-      background: #064232;
-      border: 1px solid #059669;
+      background: rgba(13, 21, 38, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.2);
       border-radius: 9999px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      color: #34d399;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #94a3b8;
+      font-family: ui-monospace, SFMono-Regular, "Segoe UI Mono", Menlo, Consolas, monospace;
     }
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
+    .status-dot-cyan {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: #10b981;
+      background: #06b6d4;
+      box-shadow: 0 0 6px #06b6d4;
+    }
+
+    /* Main identity block */
+    .identity-block {
+      display: flex;
+      flex-direction: column;
     }
     h1.name {
-      font-size: 58px;
+      font-size: 50px;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       line-height: 1.05;
       color: #ffffff;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
     .role-title {
-      font-size: 26px;
+      font-size: 23px;
       font-weight: 700;
       letter-spacing: -0.01em;
-      color: #06b6d4;
+      color: #38bdf8;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Editorial headline callout */
+    .editorial-callout {
+      border-left: 3px solid #06b6d4;
+      padding: 6px 0 6px 16px;
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
+      border-radius: 0 10px 10px 0;
       margin-bottom: 16px;
     }
-    .description {
-      font-size: 17px;
-      line-height: 1.5;
-      color: #94a3b8;
-      margin-bottom: 26px;
-      max-width: 610px;
+    .editorial-headline {
+      font-size: 23px;
+      font-weight: 700;
+      color: #f1f5f9;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin-bottom: 4px;
     }
+    .editorial-sub {
+      font-size: 14px;
+      line-height: 1.45;
+      color: #94a3b8;
+      max-width: 620px;
+    }
+
+    /* Modern tech stack chips */
     .chips-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
     }
     .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       padding: 6px 14px;
-      background: #0c1529;
-      border: 1px solid #1a2c4e;
+      background: rgba(13, 21, 38, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.22);
       border-radius: 8px;
       font-size: 13px;
       font-weight: 600;
       color: #cbd5e1;
     }
-    .chip.highlight {
-      background: #0a2540;
-      border-color: #0284c7;
-      color: #38bdf8;
+    .chip.chip-highlight {
+      background: rgba(8, 38, 70, 0.65);
+      border-color: rgba(56, 189, 248, 0.45);
+      color: #f0f9ff;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.14);
     }
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 6px #38bdf8;
+    }
+    .chip-dot-cyan {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 6px #22d3ee;
+    }
+
+    /* Engineering metrics strip */
+    .metrics-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 16, 30, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 12px;
+      padding: 10px 20px;
+      max-width: 640px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .metric-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .metric-num {
+      font-size: 21px;
+      font-weight: 800;
+      color: #38bdf8;
+      font-family: ui-monospace, SFMono-Regular, "Segoe UI Mono", Menlo, Consolas, monospace;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .metric-num.metric-green {
+      color: #34d399;
+    }
+    .metric-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #94a3b8;
+    }
+    .metric-sep {
+      width: 1px;
+      height: 26px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Meta bar */
     .meta-bar {
       display: flex;
       align-items: center;
-      gap: 18px;
-      font-size: 14px;
+      gap: 16px;
+      font-size: 13px;
       color: #64748b;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: ui-monospace, SFMono-Regular, "Segoe UI Mono", Menlo, Consolas, monospace;
     }
     .meta-item {
       display: flex;
@@ -212,28 +342,24 @@ const ogHtml = `<!DOCTYPE html>
     .meta-dot {
       color: #06b6d4;
     }
-    .domain-text {
-      color: #38bdf8;
-      font-weight: 600;
-    }
 
     /* Right column: portrait showcase */
     .right-col {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-right: 12px;
     }
     .portrait-card {
       position: relative;
-      width: 310px;
-      height: 400px;
+      width: 335px;
+      height: 490px;
       border-radius: 26px;
-      background: #070d1e;
-      border: 2px solid #0891b2;
+      background: linear-gradient(180deg, rgba(13, 21, 38, 0.75) 0%, rgba(8, 12, 22, 0.96) 100%);
+      border: 1.5px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(6, 182, 212, 0.16);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -241,37 +367,36 @@ const ogHtml = `<!DOCTYPE html>
       overflow: hidden;
       padding: 0;
     }
-    /* Cyber corner brackets */
-    .corner-bracket {
+    /* Active status badge */
+    .portrait-status-pill {
       position: absolute;
-      width: 16px;
-      height: 16px;
-      pointer-events: none;
-      z-index: 5;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(4, 47, 46, 0.9);
+      border: 1px solid rgba(52, 211, 153, 0.7);
+      border-radius: 9999px;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 14px rgba(16, 185, 129, 0.35);
     }
-    .cb-tl {
-      top: 10px;
-      left: 10px;
-      border-top: 3px solid #22d3ee;
-      border-left: 3px solid #22d3ee;
+    .status-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #34d399;
     }
-    .cb-tr {
-      top: 10px;
-      right: 10px;
-      border-top: 3px solid #22d3ee;
-      border-right: 3px solid #22d3ee;
-    }
-    .cb-bl {
-      bottom: 10px;
-      left: 10px;
-      border-bottom: 3px solid #22d3ee;
-      border-left: 3px solid #22d3ee;
-    }
-    .cb-br {
-      bottom: 10px;
-      right: 10px;
-      border-bottom: 3px solid #22d3ee;
-      border-right: 3px solid #22d3ee;
+    .status-pill-text {
+      color: #6ee7b7;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     .portrait-img {
       position: absolute;
@@ -280,84 +405,153 @@ const ogHtml = `<!DOCTYPE html>
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 15%;
       z-index: 1;
     }
-    .portrait-gradient-overlay {
+    .portrait-vignette {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 65%, #030712 100%);
+      background: linear-gradient(180deg, rgba(8, 10, 16, 0.2) 0%, transparent 25%, rgba(8, 10, 16, 0.5) 75%, #080a10 100%);
       z-index: 2;
     }
     .portrait-footer {
       position: relative;
       z-index: 3;
       width: 100%;
-      padding: 12px 16px 14px;
+      padding: 12px 18px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #030712;
-      border-top: 1px solid #14223d;
+      background: rgba(8, 12, 22, 0.94);
+      border-top: 1px solid rgba(56, 189, 248, 0.25);
     }
     .portrait-badge-name {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: #ffffff;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
     .portrait-badge-sub {
       font-size: 11px;
       font-weight: 600;
       color: #38bdf8;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: ui-monospace, SFMono-Regular, "Segoe UI Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.02em;
+    }
+    .portrait-verified-tag {
+      padding: 3px 8px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 6px;
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: 0.08em;
+      font-family: ui-monospace, SFMono-Regular, "Segoe UI Mono", Menlo, Consolas, monospace;
     }
   </style>
 </head>
 <body>
   <div class="canvas">
+    <div class="ambient-glow"></div>
     <div class="grid-lines"></div>
     <div class="top-beam"></div>
     <div class="frame-border"></div>
 
+    <!-- Constellation vector overlay -->
+    <svg class="constellation-layer" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+      <line x1="96" y1="72" x2="240" y2="48" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="240" y1="48" x2="432" y2="80" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="624" y1="64" x2="768" y2="96" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="120" y1="520" x2="312" y2="560" stroke="rgba(56, 189, 248, 0.15)" stroke-width="1" stroke-dasharray="4 4" />
+      <circle cx="96" cy="72" r="2.5" fill="#22d3ee" opacity="0.7" />
+      <circle cx="240" cy="48" r="3.5" fill="#38bdf8" opacity="0.9" />
+      <circle cx="432" cy="80" r="2.5" fill="#22d3ee" opacity="0.7" />
+      <circle cx="624" cy="64" r="3" fill="#38bdf8" opacity="0.8" />
+      <circle cx="768" cy="96" r="2.5" fill="#22d3ee" opacity="0.7" />
+      <circle cx="120" cy="520" r="2.5" fill="#22d3ee" opacity="0.6" />
+      <circle cx="312" cy="560" r="3" fill="#38bdf8" opacity="0.8" />
+      <path d="M72 192 v6 M69 195 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
+      <path d="M576 144 v6 M573 147 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
+      <path d="M720 480 v6 M717 483 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
+      <path d="M1128 144 v6 M1125 147 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
+      <path d="M1128 480 v6 M1125 483 h6" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
+    </svg>
+
     <!-- Left Column -->
     <div class="left-col">
-      <div class="badge-row">
-        <div class="pill-brand">MSA / 2026 • PORTFOLIO</div>
+      <!-- Header / Brand Row -->
+      <div class="header-row">
+        <div class="brand-badge">
+          <span class="brand-spark">◆</span>
+          <span class="brand-domain">msameerali.dev</span>
+          <span class="brand-tag">PORTFOLIO</span>
+        </div>
         <div class="pill-status">
-          <span class="pulse-dot"></span>
-          DEEPIXEL • INVICTUS AI
+          <span class="status-dot-cyan"></span>
+          <span>INVICTUS AI • DEEPIXEL</span>
         </div>
       </div>
 
-      <h1 class="name">Muhammad Sameer Ali</h1>
-      <div class="role-title">Frontend / Full-Stack Developer</div>
+      <!-- Identity & Role -->
+      <div class="identity-block">
+        <h1 class="name">Muhammad Sameer Ali</h1>
+        <div class="role-title">Frontend / Full-Stack Developer</div>
 
-      <p class="description">
-        Architecting resilient, high-performance web products, streaming AI workspaces, and responsive enterprise applications with React, Next.js, and TypeScript.
-      </p>
-
-      <div class="chips-row">
-        <div class="chip highlight">React / Next.js</div>
-        <div class="chip highlight">TypeScript</div>
-        <div class="chip">Tailwind CSS</div>
-        <div class="chip">FastAPI / Python</div>
-        <div class="chip">PostgreSQL & Prisma</div>
-        <div class="chip">SSE & PWA</div>
+        <!-- Bold Editorial Headline -->
+        <div class="editorial-callout">
+          <div class="editorial-headline">"Architecting Resilient Modern Web Systems"</div>
+          <p class="editorial-sub">
+            Engineering high-performance enterprise applications, interactive 3D web experiences, and real-time streaming architectures.
+          </p>
+        </div>
       </div>
 
+      <!-- Modern Tech Stack Chips -->
+      <div class="chips-row">
+        <div class="chip chip-highlight"><span class="chip-dot"></span>Next.js 15</div>
+        <div class="chip chip-highlight"><span class="chip-dot"></span>FastAPI</div>
+        <div class="chip chip-highlight"><span class="chip-dot"></span>React 19</div>
+        <div class="chip"><span class="chip-dot-cyan"></span>Laravel</div>
+        <div class="chip"><span class="chip-dot-cyan"></span>TypeScript</div>
+      </div>
+
+      <!-- Engineering Metrics Strip -->
+      <div class="metrics-strip">
+        <div class="metric-cell">
+          <div class="metric-num">12+</div>
+          <div class="metric-label">Deployments</div>
+        </div>
+        <div class="metric-sep"></div>
+        <div class="metric-cell">
+          <div class="metric-num">6</div>
+          <div class="metric-label">Architectures</div>
+        </div>
+        <div class="metric-sep"></div>
+        <div class="metric-cell">
+          <div class="metric-num">3+ Yrs</div>
+          <div class="metric-label">Exp</div>
+        </div>
+        <div class="metric-sep"></div>
+        <div class="metric-cell">
+          <div class="metric-num metric-green">100%</div>
+          <div class="metric-label">Delivery</div>
+        </div>
+      </div>
+
+      <!-- Secondary Meta -->
       <div class="meta-bar">
         <div class="meta-item">
           <span class="meta-dot">◆</span>
-          <span class="domain-text">msameerali.dev</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-dot">•</span>
           <span>Peshawar, Pakistan</span>
         </div>
         <div class="meta-item">
           <span class="meta-dot">•</span>
           <span>github.com/SameerAli126</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-dot">•</span>
+          <span>msameerali.dev</span>
         </div>
       </div>
     </div>
@@ -365,18 +559,21 @@ const ogHtml = `<!DOCTYPE html>
     <!-- Right Column: Portrait Showcase -->
     <div class="right-col">
       <div class="portrait-card">
-        <div class="corner-bracket cb-tl"></div>
-        <div class="corner-bracket cb-tr"></div>
-        <div class="corner-bracket cb-bl"></div>
-        <div class="corner-bracket cb-br"></div>
+        <!-- Active Status Badge -->
+        <div class="portrait-status-pill">
+          <span class="status-pulse-dot"></span>
+          <span class="status-pill-text">Available for Full-Stack Roles</span>
+        </div>
+
         <img class="portrait-img" src="${portraitBase64}" alt="Muhammad Sameer Ali" />
-        <div class="portrait-gradient-overlay"></div>
+        <div class="portrait-vignette"></div>
+
         <div class="portrait-footer">
           <div>
             <div class="portrait-badge-name">Muhammad Sameer Ali</div>
             <div class="portrait-badge-sub">FRONTEND / FULL-STACK</div>
           </div>
-          <div class="pill-brand" style="padding: 4px 10px; font-size: 11px;">MSA</div>
+          <div class="portrait-verified-tag">PRO</div>
         </div>
       </div>
     </div>
