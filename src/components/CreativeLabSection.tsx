@@ -57,6 +57,7 @@ import {
   playSynthNote,
   playBrakeSqueal,
 } from "@/lib/audio";
+import BrandLogo from "./BrandLogo";
 
 const IPHONE_COLORS = {
   natural: { name: "Natural Titanium", hex: "#9a958d", border: "#b8b3ab", accent: "#d4ceb0", glow: "rgba(154, 149, 141, 0.3)" },
@@ -878,8 +879,8 @@ export const CreativeLabSection = () => {
                           {islandMode === "compact" && (
                             <>
                               <div className="flex items-center gap-1.5">
-                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                                <span className="text-white text-[8px] font-bold">MSA.OS</span>
+                                <BrandLogo size={12} variant="minimal" className="w-3 h-3" />
+                                <span className="text-white text-[8px] font-bold">SAM.OS</span>
                               </div>
                               <div className="flex items-center gap-1">
                                 <div className="w-2.5 h-2.5 rounded-full bg-neutral-900 border border-cyan-500/80" />
@@ -942,7 +943,7 @@ export const CreativeLabSection = () => {
                                 </div>
                                 <div className="text-left">
                                   <p className="text-[10px] font-bold text-white">Tim Cook</p>
-                                  <p className="text-[8px] text-cyan-300">Apple Park • MSA AI</p>
+                                  <p className="text-[8px] text-cyan-300">Apple Park • Sameer AI</p>
                                 </div>
                               </div>
                               <div className="flex items-center gap-1">
@@ -1228,11 +1229,13 @@ export const CreativeLabSection = () => {
                         }}
                       />
 
-                      {/* Apple/MSA Polished Mirror Emblem */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center opacity-70">
-                        <div className="w-9 h-9 rounded-full border-2 border-white/40 flex items-center justify-center shadow">
-                          <span className="text-[11px] font-heading font-extrabold text-white tracking-widest">MSA</span>
-                        </div>
+                      {/* Bespoke Polished Titanium Emblem */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center opacity-80 transition-opacity hover:opacity-100">
+                        <BrandLogo
+                          variant="metallic"
+                          size={46}
+                          className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
+                        />
                       </div>
 
                       {/* TRIPLE SAPPHIRE CAMERA PLATE (Top-Left of backplate) */}

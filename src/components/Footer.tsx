@@ -1,5 +1,6 @@
 import { ArrowUp } from "lucide-react";
 import { PROFILE } from "@/config/site";
+import BrandLogo from "./BrandLogo";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -10,14 +11,17 @@ const Footer = () => {
     <footer className="py-12 border-t border-border/60 bg-background/80 relative z-10">
       <div className="container mx-auto px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-center sm:text-left">
-            <p className="font-heading text-sm text-foreground font-semibold">
-              &copy; {new Date().getFullYear()}{" "}
-              <span className="tech-gradient-text">{PROFILE.fullName}</span>
-            </p>
-            <p className="font-mono text-xs text-muted-foreground mt-1">
-              Engineered with React 18, TypeScript, Tailwind CSS & Framer Motion.
-            </p>
+          <div className="flex items-center gap-3.5 text-center sm:text-left">
+            <BrandLogo size={36} className="shadow-[0_0_15px_rgba(59,130,246,0.25)]" />
+            <div>
+              <p className="font-heading text-sm text-foreground font-semibold">
+                &copy; {new Date().getFullYear()}{" "}
+                <span className="tech-gradient-text">{PROFILE.fullName}</span>
+              </p>
+              <p className="font-mono text-xs text-muted-foreground mt-0.5">
+                Engineered with React 18, TypeScript, Tailwind CSS &amp; Framer Motion.
+              </p>
+            </div>
           </div>
 
           <button

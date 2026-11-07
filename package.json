@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-cv-pdf.mjs && node scripts/generate-og-image.mjs && vite build && node scripts/generate-static-seo-pages.mjs",
+    "build": "node scripts/generate-cv-pdf.mjs && node scripts/generate-og-image.mjs && node scripts/generate-favicons.mjs && vite build && node scripts/generate-static-seo-pages.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",

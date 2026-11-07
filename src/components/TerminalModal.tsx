@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal as TerminalIcon, X, Maximize2, Minimize2, CornerDownLeft } from "lucide-react";
 import { PROJECTS, PROFILE, EXPERIENCES, EDUCATION } from "@/config/site";
+import BrandLogo from "./BrandLogo";
 
 type TerminalLine = {
   id: string;
@@ -390,7 +391,7 @@ export const TerminalModal = ({ isOpen, onClose }: TerminalModalProps) => {
                 />
                 <div className="w-3 h-3 rounded-full bg-green-500/80" />
                 <span id="terminal-title" className="ml-2 text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
-                  <TerminalIcon size={13} className="text-primary" />
+                  <BrandLogo size={14} variant="minimal" className="w-3.5 h-3.5 text-primary" />
                   sameer@dev-machine: ~ (zsh)
                 </span>
               </div>

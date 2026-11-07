@@ -6,6 +6,7 @@ import { NAV_ITEMS, PROFILE } from "@/config/site";
 import { isSoundEnabled, toggleSound, playClick } from "@/lib/audio";
 import TerminalModal from "./TerminalModal";
 import CvModal from "./CvModal";
+import BrandLogo from "./BrandLogo";
 
 interface NavbarProps {
   onOpenCv?: () => void;
@@ -94,9 +95,7 @@ const Navbar = ({ onOpenCv }: NavbarProps) => {
             href={resolveHref("#hero")}
             className="group flex items-center gap-3 font-display text-lg md:text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-90"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 border border-primary/30 text-primary font-mono text-sm font-bold shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-transform group-hover:scale-105">
-              {PROFILE.initials}
-            </span>
+            <BrandLogo size={38} className="shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
             <div className="flex flex-col">
               <span className="font-heading font-bold text-sm sm:text-base leading-tight">
                 {PROFILE.fullName}

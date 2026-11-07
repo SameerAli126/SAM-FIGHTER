@@ -283,6 +283,26 @@ function applySeo(html, meta) {
   html = upsertMeta(html, "itemprop", "image", imageUrl);
   html = upsertStructuredData(html, buildStructuredData(meta, canonicalUrl, imageUrl));
 
+  // Ensure all favicon and touch icon formats are linked
+  if (!html.includes('href="/favicon.svg"')) {
+    html = html.replace("</head>", `    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />\n  </head>`);
+  }
+  if (!html.includes('href="/favicon-32x32.png"')) {
+    html = html.replace("</head>", `    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />\n  </head>`);
+  }
+  if (!html.includes('href="/favicon-16x16.png"')) {
+    html = html.replace("</head>", `    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />\n  </head>`);
+  }
+  if (!html.includes('href="/apple-touch-icon.png"')) {
+    html = html.replace("</head>", `    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />\n  </head>`);
+  }
+  if (!html.includes('href="/favicon.ico"')) {
+    html = html.replace("</head>", `    <link rel="shortcut icon" href="/favicon.ico" />\n  </head>`);
+  }
+  if (!html.includes('href="/site.webmanifest"')) {
+    html = html.replace("</head>", `    <link rel="manifest" href="/site.webmanifest" />\n  </head>`);
+  }
+
   return html;
 }
 

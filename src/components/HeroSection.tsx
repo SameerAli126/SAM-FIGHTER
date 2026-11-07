@@ -15,6 +15,7 @@ import {
 import { PROFILE } from "@/config/site";
 import sameerPhoto from "@/assets/sameer-khan.png";
 import { playClick } from "@/lib/audio";
+import BrandLogo from "./BrandLogo";
 
 
 interface HeroSectionProps {
@@ -222,8 +223,9 @@ export const HeroSection = ({ onOpenCv }: HeroSectionProps) => {
               <div className="pb-3 mb-4 border-b border-border/60 text-xs font-mono space-y-2.5">
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
+                    <BrandLogo size={16} variant="minimal" className="w-4 h-4 text-cyan-400" />
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-foreground font-semibold">MSA.OS v2.5</span>
+                    <span className="text-foreground font-semibold">SAM.OS v2.5</span>
                     <span className="text-muted-foreground hidden sm:inline">• Live Atelier</span>
                   </div>
                   <div className="flex items-center gap-1 text-[10px] text-cyan-400 font-semibold px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/25">

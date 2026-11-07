@@ -111,7 +111,9 @@ export const FUNNEL_LINKS = {
 } as const;
 
 export const PROFILE = {
-  initials: "MSA",
+  initials: "SA",
+  brandMark: "Nexus S",
+  brandName: "Sameer Ali",
   fullName: "Muhammad Sameer Ali",
   contactEmail: "khsameer626@gmail.com",
   phone: "+92 335 8181400",
