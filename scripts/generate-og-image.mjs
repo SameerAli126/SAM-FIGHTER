@@ -374,7 +374,7 @@ const ogHtml = `<!DOCTYPE html>
         <div class="portrait-footer">
           <div>
             <div class="portrait-badge-name">Muhammad Sameer Ali</div>
-            <div class="portrait-badge-sub">FULL-STACK ENGINEER</div>
+            <div class="portrait-badge-sub">FRONTEND / FULL-STACK</div>
           </div>
           <div class="pill-brand" style="padding: 4px 10px; font-size: 11px;">MSA</div>
         </div>

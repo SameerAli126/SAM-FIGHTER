@@ -240,12 +240,15 @@ function applySeo(html, meta) {
   const imageUrl = toAbsoluteUrl(SITE.defaultImage);
   const keywords = Array.from(new Set(meta.keywords)).join(", ");
 
-  if (!html.includes('prefix="og: https://ogp.me/ns#"')) {
-    html = html.replace(/<html([^>]*)>/i, '<html$1 prefix="og: https://ogp.me/ns#">');
+  if (/prefix=["'][^"']*["']/i.test(html)) {
+    html = html.replace(/prefix=["'][^"']*["']/i, 'prefix="og: http://ogp.me/ns#"');
+  } else {
+    html = html.replace(/<html([^>]*)>/i, '<html$1 prefix="og: http://ogp.me/ns#">');
   }
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${meta.title}</title>`);
   html = upsertLink(html, "canonical", canonicalUrl);
+  html = upsertLink(html, "image_src", imageUrl);
   html = upsertMeta(html, "name", "title", meta.title);
   html = upsertMeta(html, "name", "description", meta.description);
   html = upsertMeta(html, "name", "author", SITE.person.name);
@@ -284,11 +287,23 @@ function applySeo(html, meta) {
 }
 
 async function writeRouteHtml(route, baseHtml) {
-  const relativePath = route.path === "/" ? "index.html" : `${route.path.replace(/^\//, "")}.html`;
-  const filePath = path.join(distDir, relativePath);
+  const content = applySeo(baseHtml, route);
 
-  await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, applySeo(baseHtml, route), "utf8");
+  if (route.path === "/") {
+    const indexPath = path.join(distDir, "index.html");
+    await writeFile(indexPath, content, "utf8");
+    return;
+  }
+
+  const cleanSlug = route.path.replace(/^\//, "");
+  const directHtmlPath = path.join(distDir, `${cleanSlug}.html`);
+  const nestedIndexPath = path.join(distDir, cleanSlug, "index.html");
+
+  await mkdir(path.dirname(directHtmlPath), { recursive: true });
+  await writeFile(directHtmlPath, content, "utf8");
+
+  await mkdir(path.dirname(nestedIndexPath), { recursive: true });
+  await writeFile(nestedIndexPath, content, "utf8");
 }
 
 async function main() {

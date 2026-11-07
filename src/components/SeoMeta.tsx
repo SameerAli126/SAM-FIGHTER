@@ -40,6 +40,18 @@ function setCanonical(href: string) {
   element.setAttribute("href", href);
 }
 
+function setLink(rel: string, href: string) {
+  let element = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+
+  if (!element) {
+    element = document.createElement("link");
+    element.setAttribute("rel", rel);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("href", href);
+}
+
 function setStructuredData(content: string) {
   let element = document.head.querySelector<HTMLScriptElement>('script[data-seo-schema="route"]');
 
@@ -154,7 +166,9 @@ const SeoMeta = ({
     const resolvedKeywords = Array.from(new Set(keywords)).join(", ");
 
     document.title = title;
+    document.documentElement.setAttribute("prefix", "og: http://ogp.me/ns#");
     setCanonical(canonicalUrl);
+    setLink("image_src", imageUrl);
 
     setMetaTag("name", "title", title);
     setMetaTag("name", "description", description);
